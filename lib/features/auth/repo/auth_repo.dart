@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -64,38 +62,14 @@ class AuthRepo {
     return deviceToken;
   }
 
-  // Future<Either<ServerFailure, Response>> subscribeToTopic() async {
-  //   try {
-  //     FirebaseMessaging.instance.subscribeToTopic(EndPoints.topic);
-  //     Response response = await dioClient.post(
-  //       data: {"_method": "put", "cm_firebase_token": await saveDeviceToken()},
-  //       uri: EndPoints.,
-  //     );
-  //   else {
-  //   return left(ServerFailure(response.data['message']));
-  //   }
-  //   } catch (error) {
-  //   return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-  //   }
-  // }
-
-  // Future<void> saveUserToken({required String token}) async {
-  //   try {
-  //     dioClient.updateHeader(token: token);
-  //     await sharedPreferences.setString(AppStorageKey.token, token);
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
   Future<Either<ServerFailure, Response>> logIn(
       {required String mail, required String password}) async {
     try {
       Response response = await dioClient.post(uri: EndPoints.logIn, data: {
+        // "phone": "1234567891",
         "email": mail,
-        // "phone": phone,
         "password": password,
-        "fcm_token": await saveDeviceToken()
+        // "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -167,18 +141,19 @@ class AuthRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> register(
-      {required String phone,
-      required String name,
-      required String mail,
-      // required String gender,
-      required String password}) async {
+  Future<Either<ServerFailure, Response>> register({
+    required String phone,
+    required String name,
+    required String mail,
+    required String password,
+    String? code,
+  }) async {
     try {
       Response response = await dioClient.post(uri: EndPoints.register, data: {
         "name": name,
         "phone": phone,
         "email": mail,
-        // "gender": 1,
+        if (code != null) "code": code,
         "password": password,
         // "fcm_token": await saveDeviceToken()
       });

@@ -60,7 +60,7 @@ class _VerificationState extends State<Verification> {
                       style: AppTextStyles.regular
                           .copyWith(fontSize: 16, color: Styles.SUBTITLE),
                     ),
-                    Text(provider.mailTEC.text.trim().hiddenEmail(),
+                    Text((provider.mailTEC.text.trim()).hiddenEmail(),
                         textAlign: TextAlign.center,
                         style: AppTextStyles.medium.copyWith(
                           fontSize: 16,

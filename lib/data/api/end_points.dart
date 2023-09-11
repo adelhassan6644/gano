@@ -4,7 +4,7 @@ class EndPoints {
   static const String imageUrl = 'https://massage-app.softwarecloud2.com/';
   static const String apiKey = 's7xrpFdw4G0F21rfLyD4TaBkjVJYgwGfI3y458ejWjw9zOggruX30e1as2d3';
   static const String topic = 'gano';
-  static const String logIn = 'v1/login';
+  static const String logIn = 'login';
   static const String register = 'client';
   static const String forgetPassword = 'resetPassword/email';
   static const String checkMailForResetPassword = 'resetPassword/checkCode';

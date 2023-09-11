@@ -88,12 +88,6 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        // if (_isRememberMe) {
-        //   authRepo.remember(_mailTEC.text.trim());
-        // }
-        // else {
-        //   authRepo.forget();
-        // }
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
@@ -101,9 +95,9 @@ class AuthProvider extends ChangeNotifier {
             Routes.DASHBOARD,
             clean: true,
           );
+          clear();
         } else {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
-          clear();
         }
       });
       _isLoading = false;
@@ -236,7 +230,7 @@ class AuthProvider extends ChangeNotifier {
         mail: mailTEC.text.trim(),
         password: passwordTEC.text.trim(),
         phone: phoneTEC.text.trim(),
-        // gender: userType.toString(),
+        code: invitationCodeTEC.text.trim(),
       );
       response.fold((fail) {
         CustomSnackBar.showSnackBar(

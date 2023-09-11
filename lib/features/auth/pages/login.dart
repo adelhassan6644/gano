@@ -129,10 +129,10 @@ class _LoginState extends State<Login> {
                                 child: CustomButton(
                                     text: getTranslated("login", context),
                                     onTap: () {
-                                      // if (_formKey.currentState!.validate()) {
-                                      //   provider.logIn();
-                                      // }
-                                      CustomNavigator.push(Routes.DASHBOARD,arguments: 0,clean: true);
+                                      if (_formKey.currentState!.validate()) {
+                                        provider.logIn();
+                                      }
+                                      // CustomNavigator.push(Routes.DASHBOARD,arguments: 0,clean: true);
 
                                     },
                                     isLoading: provider.isLoading),

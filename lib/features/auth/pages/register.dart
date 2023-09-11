@@ -203,8 +203,8 @@ class _AgreeToTerms extends StatelessWidget {
             focusColor: Colors.transparent,
             onTap: () => onChange(!check),
             child: Container(
-              width: 18.w,
-              height: 18.h,
+              width: 20.w,
+              height: 20.h,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: check ? Styles.PRIMARY_COLOR : Styles.WHITE_COLOR,

@@ -173,6 +173,7 @@
   "invitation_header": "يصبح جانو أكثر مرحا بوجود أصدقاء!",
   "invitation_description": "يمكنك الآن دعوة أصدقائك\n قم بإدخال البريد الإلكتروني الخاص بصديقك",
   "send_invitation": "إرسال دعوة",
-  "or_send_it_via": "أو ارسلها عبر....."
+  "or_send_it_via": "أو ارسلها عبر.....",
+  "oops_you_must_agree_to_terms_and_conditions": "عفوًا، يجب الموافقة علي الشروط والآحكام أولاً"
 
 }
