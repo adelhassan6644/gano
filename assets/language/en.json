@@ -175,5 +175,12 @@
   "invitation_header": "Gano is even more fun with friends!",
   "invitation_description": "You can now invite your friends\n  Enter your friend's email",
   "send_invitation": "Send Invitation",
-  "or_send_it_via": "Or Send it via..."
+  "or_send_it_via": "Or Send it via...",
+  "point": "point",
+  "in_this_week": "in this week",
+  "my_points": "My Points",
+  "transfer": "Transfer",
+  "earnings": "Earnings",
+  "statistics": "Statistics",
+  "video": "Video"
 }

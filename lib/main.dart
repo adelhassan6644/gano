@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gano/firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gano/main_page/pages/dashboard.dart';
 import 'package:provider/provider.dart';
 import 'app/core/utils/app_storage_keys.dart';
 import 'app/core/utils/un_focus.dart';
@@ -62,9 +63,10 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: UnFocus(child: child!)),
-      initialRoute: Routes.SPLASH,
+      // initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
-      onGenerateRoute: CustomNavigator.onCreateRoute,
+      // onGenerateRoute: CustomNavigator.onCreateRoute,
+      home: DashBoard(),
       navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,

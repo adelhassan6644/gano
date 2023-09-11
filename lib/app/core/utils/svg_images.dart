@@ -82,4 +82,5 @@ class SvgImages {
   static const String termsFile = 'assets/svgs/terms_file.svg';
   static const String openButton = 'assets/svgs/open_button.svg';
   static const String moreSquareIcon = 'assets/svgs/more_square.svg';
+  static const String earnings = 'assets/svgs/earnings.svg';
 }

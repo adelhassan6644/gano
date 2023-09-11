@@ -26,7 +26,7 @@ abstract class Styles {
   static const Color GREEN = Color(0xff34C759);
   static const Color GREY_BORDER = Color(0xFFF5F5F5);
   static const Color LIGHT_BORDER_COLOR = Color(0xffE8ECF4);
-  static const Color ALERT_COLOR = Color(0xffDBAB02);
+  static const Color GOLD_COLOR = Color(0xffFEC42B);
   static const Color FAILED_COLOR = Colors.black;
   static const Color ERORR_COLOR = Colors.black;
   static const Color RED_COLOR = Color(0xffFF3B30);
