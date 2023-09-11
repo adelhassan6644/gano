@@ -91,10 +91,7 @@ class AuthProvider extends ChangeNotifier {
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
-          CustomNavigator.push(
-            Routes.DASHBOARD,
-            clean: true,
-          );
+          CustomNavigator.push(Routes.DASHBOARD, clean: true);
           clear();
         } else {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
@@ -297,6 +294,7 @@ class AuthProvider extends ChangeNotifier {
                             CustomNavigator.navigatorState.currentContext!),
                         onTapMain: () => CustomNavigator.push(
                             Routes.VERIFICATION,
+                            replace: true,
                             arguments: false),
                       )
                     ]));
@@ -349,10 +347,7 @@ class AuthProvider extends ChangeNotifier {
                   backgroundColor: Styles.ACTIVE,
                   borderColor: Colors.transparent));
         } else {
-          CustomNavigator.push(
-            Routes.RESET_PASSWORD,
-            replace: true,
-          );
+          CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
         }
       });
       _isVerify = false;
