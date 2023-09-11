@@ -22,7 +22,6 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      bottom: false,
       child: Scaffold(
         backgroundColor: Styles.SCAFFOLD_BG,
         body: Column(
