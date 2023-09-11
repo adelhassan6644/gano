@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:gano/features/notifications/page/notifications_page.dart';
 import 'package:gano/firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gano/main_page/pages/dashboard.dart';
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
       // initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
       // onGenerateRoute: CustomNavigator.onCreateRoute,
-      home: DashBoard(),
+      home: NotificationsPage(),
       navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,
