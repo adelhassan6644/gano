@@ -13,6 +13,7 @@ class EndPoints {
   static const String resend = 'email/verification';
   static const String verifyEmail = 'check/verificationCode';
   static getProfile(id) => 'client/$id';
+  static getStatistics(id) => 'statistics/$id';
   static updateProfile(id) => 'client/$id';
   static getFavourites(id) => 'favorites/$id';
   static getNotifications(id) => 'notification/$id';

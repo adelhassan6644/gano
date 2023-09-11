@@ -51,4 +51,21 @@ class ProfileRepo {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
+
+
+  Future<Either<ServerFailure, Response>> getStatistics() async {
+    try {
+      Response response = await dioClient.get(
+        uri: EndPoints.getStatistics(
+            sharedPreferences.getString(AppStorageKey.userId)),
+      );
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(response.data['message']));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }
 }

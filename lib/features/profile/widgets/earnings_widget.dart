@@ -7,7 +7,9 @@ import 'package:gano/components/custom_images.dart';
 import '../../../app/core/utils/styles.dart';
 
 class EarningsWidget extends StatelessWidget {
-  const EarningsWidget({Key? key}) : super(key: key);
+  const EarningsWidget({Key? key, this.views, this.coins}) : super(key: key);
+  final String? views;
+  final String? coins;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class EarningsWidget extends StatelessWidget {
                   ),
                   RichText(
                     text: TextSpan(
-                        text: "+32 ${getTranslated("point", context)} ",
+                        text: "+$coins ${getTranslated("point", context)} ",
                         style: AppTextStyles.regular
                             .copyWith(color: Styles.TITLE, fontSize: 14),
                         children: [
@@ -89,7 +91,7 @@ class EarningsWidget extends StatelessWidget {
                   ),
                   RichText(
                     text: TextSpan(
-                        text: "+32 ${getTranslated("video", context)} ",
+                        text: "+$views ${getTranslated("video", context)} ",
                         style: AppTextStyles.regular
                             .copyWith(color: Styles.TITLE, fontSize: 14),
                         children: [

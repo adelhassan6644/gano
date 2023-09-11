@@ -18,11 +18,13 @@ class More extends StatelessWidget {
           Dimensions.PADDING_SIZE_DEFAULT),
       child: const Column(
         children: [
+          ProfileCard(),
           Expanded(
             child: ListAnimator(
               data: [
-                ProfileCard(),
-                SizedBox(height: 24,),
+                SizedBox(
+                  height: 24,
+                ),
                 MoreBodyWidget(),
               ],
             ),

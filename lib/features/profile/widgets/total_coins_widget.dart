@@ -9,7 +9,11 @@ import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/styles.dart';
 
 class TotalCoinsWidget extends StatelessWidget {
-  const TotalCoinsWidget({Key? key}) : super(key: key);
+  const TotalCoinsWidget({Key? key, this.points, this.weekPoints})
+      : super(key: key);
+
+  final String? points;
+  final String? weekPoints;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class TotalCoinsWidget extends StatelessWidget {
             ),
             RichText(
               text: TextSpan(
-                  text: "+32 ${getTranslated("point", context)} ",
+                  text: "+$weekPoints ${getTranslated("point", context)} ",
                   style: AppTextStyles.regular
                       .copyWith(color: Styles.GREEN, fontSize: 14),
                   children: [
@@ -59,7 +63,7 @@ class TotalCoinsWidget extends StatelessWidget {
                 Expanded(
                   child: RichText(
                     text: TextSpan(
-                        text: "+32 ",
+                        text: "+$points ",
                         style: AppTextStyles.semiBold
                             .copyWith(color: Styles.TITLE, fontSize: 42),
                         children: [
