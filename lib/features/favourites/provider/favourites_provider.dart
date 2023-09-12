@@ -122,6 +122,7 @@ class FavouritesProvider extends ChangeNotifier {
         showToast(getTranslated("your_favourites_has_been_updated",
             CustomNavigator.navigatorState.currentContext!));
         if (fromAuth) {
+          repo.setLoggedIn();
           CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
         }
       });

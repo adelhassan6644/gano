@@ -17,6 +17,9 @@ class FavouriteRepo {
   bool isLoggedIn() {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
+  setLoggedIn() {
+    sharedPreferences.setBool(AppStorageKey.isLogin, true);
+  }
 
   String? getUserId() {
     return sharedPreferences.getString(AppStorageKey.userId);

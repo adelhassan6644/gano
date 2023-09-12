@@ -153,7 +153,7 @@ class AuthRepo {
         "name": name,
         "phone": phone,
         "email": mail,
-        if (code != null) "code": code,
+        if (code != null) "invitation_code": code,
         "password": password,
         // "fcm_token": await saveDeviceToken()
       });

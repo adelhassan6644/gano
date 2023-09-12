@@ -91,8 +91,8 @@ class AuthProvider extends ChangeNotifier {
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] == null) {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
-        } else if (success.data['data']["hasCategories"] == null) {
-          CustomNavigator.push(Routes.FAVOURITE, arguments: false);
+        } else if (success.data['data']["hisCategories"] == null) {
+          CustomNavigator.push(Routes.FAVOURITE, arguments: true);
         } else {
           authRepo.setLoggedIn();
           CustomNavigator.push(Routes.DASHBOARD, clean: true);
@@ -143,7 +143,7 @@ class AuthProvider extends ChangeNotifier {
                         description: getTranslated(
                             "you_can_now_login_with_your_new_password",
                             CustomNavigator.navigatorState.currentContext!),
-                        mainTextButton: getTranslated("dashboard",
+                        mainTextButton: getTranslated("login",
                             CustomNavigator.navigatorState.currentContext!),
                         onTapMain: () =>
                             CustomNavigator.push(Routes.LOGIN, clean: true),
@@ -335,7 +335,7 @@ class AuthProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (fromRegister) {
-          CustomNavigator.push(Routes.FAVOURITE, arguments: false, clean: true);
+          CustomNavigator.push(Routes.FAVOURITE, arguments: true, clean: true);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("register_successfully",

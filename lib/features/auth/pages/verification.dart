@@ -13,6 +13,7 @@ import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_images.dart';
 import '../../../components/custom_pin_code_field.dart';
+import '../../../data/config/di.dart';
 import '../provider/auth_provider.dart';
 
 class Verification extends StatefulWidget {
@@ -24,6 +25,13 @@ class Verification extends StatefulWidget {
 
 class _VerificationState extends State<Verification> {
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () => sl<AuthProvider>().codeTEC.clear());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

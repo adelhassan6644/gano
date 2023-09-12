@@ -129,7 +129,7 @@ class CustomNetworkImage {
             shape: BoxShape.circle),
         child: CircleAvatar(
           radius: radius,
-          backgroundColor: backGroundColor ?? Colors.white,
+          backgroundColor: backGroundColor ?? Styles.PRIMARY_COLOR,
           child: Image.asset(Images.logo),
         ),
       ),

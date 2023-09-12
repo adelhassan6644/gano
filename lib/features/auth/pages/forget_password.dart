@@ -58,7 +58,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     getTranslated("forget_password_description", context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.medium
-                        .copyWith(fontSize: 18, color: Styles.SUBTITLE),
+                        .copyWith(fontSize: 16, color: Styles.SUBTITLE),
                   ),
                   Form(
                       key: _formKey,

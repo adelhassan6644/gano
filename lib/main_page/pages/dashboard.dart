@@ -7,6 +7,7 @@ import '../../data/config/di.dart';
 import '../../data/network/network_info.dart';
 import '../../features/home/page/home.dart';
 import '../../features/more/page/more.dart';
+import '../../features/profile/provider/profile_provider.dart';
 import '../widget/nav_bar.dart';
 
 class DashBoard extends StatefulWidget {
@@ -20,8 +21,7 @@ class _DashBoardState extends State<DashBoard> {
   void initState() {
     NetworkInfo.checkConnectivity();
     // sl<HomeProvider>().getCategories();
-    // sl<FavouriteProvider>().getFavourites();
-    // sl<ProfileProvider>().getProfile();
+    sl<ProfileProvider>().getProfile();
     sl<MainPageProvider>().updateDashboardIndex(0);
 
     super.initState();
