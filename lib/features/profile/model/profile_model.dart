@@ -11,7 +11,6 @@ class ProfileModel {
   String? points;
   String? weekPoints;
   DateTime? createdAt;
-  bool? hasCategories;
 
   ProfileModel(
       {this.id,
@@ -25,7 +24,6 @@ class ProfileModel {
       this.weekPoints,
       this.coins,
       this.views,
-      this.hasCategories,
       this.createdAt});
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -41,7 +39,6 @@ class ProfileModel {
             json['week_points'] != null ? json['week_points'].toString() : "0",
         coins: json['coins'] != null ? json['coins'].toString() : "0",
         views: json['views'] != null ? json['views'].toString() : "0",
-        hasCategories: json['hasCategories'] == 1 ? true : false,
         createdAt: json["created_at"] == null
             ? DateTime.now()
             : DateTime.parse(json["created_at"]),

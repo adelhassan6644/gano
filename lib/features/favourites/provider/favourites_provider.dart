@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:gano/navigation/routes.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
@@ -101,7 +102,7 @@ class FavouritesProvider extends ChangeNotifier {
   }
 
   bool isSaving = false;
-  updateFavourites() async {
+  updateFavourites(bool fromAuth) async {
     try {
       isSaving = true;
       notifyListeners();
@@ -120,6 +121,9 @@ class FavouritesProvider extends ChangeNotifier {
       }, (response) {
         showToast(getTranslated("your_favourites_has_been_updated",
             CustomNavigator.navigatorState.currentContext!));
+        if (fromAuth) {
+          CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
+        }
       });
       isSaving = false;
       notifyListeners();

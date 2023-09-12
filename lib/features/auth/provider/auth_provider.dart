@@ -89,12 +89,14 @@ class AuthProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         authRepo.saveUserId(success.data['data']["id"]);
-        if (success.data['data']["email_verified_at"] != null) {
+        if (success.data['data']["email_verified_at"] == null) {
+          CustomNavigator.push(Routes.VERIFICATION, arguments: true);
+        } else if (success.data['data']["hasCategories"] == null) {
+          CustomNavigator.push(Routes.FAVOURITE, arguments: false);
+        } else {
           authRepo.setLoggedIn();
           CustomNavigator.push(Routes.DASHBOARD, clean: true);
           clear();
-        } else {
-          CustomNavigator.push(Routes.VERIFICATION, arguments: true);
         }
       });
       _isLoading = false;
@@ -333,12 +335,7 @@ class AuthProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (fromRegister) {
-          authRepo.setLoggedIn();
-          CustomNavigator.push(
-            Routes.DASHBOARD,
-            clean: true,
-          );
-          clear();
+          CustomNavigator.push(Routes.FAVOURITE, arguments: false, clean: true);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("register_successfully",
@@ -346,6 +343,7 @@ class AuthProvider extends ChangeNotifier {
                   isFloating: true,
                   backgroundColor: Styles.ACTIVE,
                   borderColor: Colors.transparent));
+          clear();
         } else {
           CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
         }

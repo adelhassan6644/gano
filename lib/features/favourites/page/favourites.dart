@@ -50,7 +50,7 @@ class Favourites extends StatelessWidget {
               child: CustomButton(
                 text: getTranslated("save_changes", context),
                 isLoading: provider.isSaving,
-                onTap: () => provider.updateFavourites(),
+                onTap: () => provider.updateFavourites(fromAuth),
               ),
             );
           }),

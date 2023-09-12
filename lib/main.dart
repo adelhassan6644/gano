@@ -13,7 +13,6 @@ import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app/core/utils/app_strings.dart';
-import 'features/favourites/page/favourites.dart';
 import 'navigation/custom_navigation.dart';
 import 'package:gano/data/config/di.dart' as di;
 import 'navigation/routes.dart';
@@ -62,10 +61,9 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: UnFocus(child: child!)),
-      // initialRoute: Routes.SPLASH,
+      initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
-      // onGenerateRoute: CustomNavigator.onCreateRoute,
-      home: Favourites(fromAuth: false),
+      onGenerateRoute: CustomNavigator.onCreateRoute,
       navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,
