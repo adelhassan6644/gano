@@ -64,7 +64,7 @@ class _ProfileCardState extends State<ProfileCard> {
                           provider.isLogin
                               ? provider.nameTEC.text.trim()
                               : "Guest",
-                          maxLines: 1,
+                          maxLines: isExpanded ? 2 : 1,
                           style: AppTextStyles.semiBold.copyWith(
                               color: Styles.TITLE,
                               fontSize: 16,
@@ -75,10 +75,10 @@ class _ProfileCardState extends State<ProfileCard> {
                           provider.isLogin
                               ? provider.emailTEC.text.trim()
                               : "guest@Gano.com",
-                          maxLines: 1,
+                          maxLines: isExpanded ? 2 : 1,
                           style: AppTextStyles.regular.copyWith(
                               color: Styles.SUBTITLE,
-                              fontSize: 14,
+                              fontSize: 12,
                               overflow: TextOverflow.ellipsis),
                         ),
                       ],

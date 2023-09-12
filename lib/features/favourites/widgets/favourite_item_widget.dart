@@ -32,7 +32,7 @@ class FavouriteItemWidget extends StatelessWidget {
                 CustomNetworkImage.circleNewWorkImage(
                     image: favouriteItem.image,
                     radius: 37.5,
-                    padding: 16,
+                    padding: 12,
                     backGroundColor:
                         isFav ? const Color(0xFFFFF6DE) : Styles.WHITE_COLOR,
                     color: Styles.SELECTED_BORER_COLOR),

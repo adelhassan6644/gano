@@ -17,12 +17,15 @@ class FavouritesProvider extends ChangeNotifier {
   bool get isLogin => repo.isLoggedIn();
 
   List<int> favouritesId = [];
+  bool isChanged = false;
+
   addItem({required int id, required bool isFav}) {
     if (isFav) {
       favouritesId.removeWhere((e) => e == id);
     } else {
       favouritesId.add(id);
     }
+    isChanged = true;
     notifyListeners();
   }
 
@@ -73,6 +76,7 @@ class FavouritesProvider extends ChangeNotifier {
   FavouriteModel? items;
   getItems() async {
     try {
+      items = null;
       isGetting = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await repo.getCategories();
@@ -103,35 +107,38 @@ class FavouritesProvider extends ChangeNotifier {
 
   bool isSaving = false;
   updateFavourites(bool fromAuth) async {
-    try {
-      isSaving = true;
-      notifyListeners();
+    if (isChanged) {
+      try {
+        isSaving = true;
+        notifyListeners();
 
-      // var body = {"user_id": repo.getUserId()};
-      // for (int i = 0; i < favouritesId.length; i++) {
-      //   body.addAll({'id[$i]': "${favouritesId[i]}"});
-      // }
+        var body = {"categories": favouritesId};
 
-      var body = {"categories": favouritesId};
-
-      Either<ServerFailure, Response> response =
-          await repo.updateFavourite(body);
-      response.fold((l) {
-        showToast(l.error);
-      }, (response) {
-        showToast(getTranslated("your_favourites_has_been_updated",
-            CustomNavigator.navigatorState.currentContext!));
-        if (fromAuth) {
-          repo.setLoggedIn();
-          CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
-        }
-      });
-      isSaving = false;
-      notifyListeners();
-    } catch (e) {
-      showToast(e.toString());
-      isSaving = false;
-      notifyListeners();
+        Either<ServerFailure, Response> response =
+            await repo.updateFavourite(body);
+        response.fold((l) {
+          showToast(l.error);
+        }, (response) {
+          isChanged = false;
+          showToast(getTranslated("your_favourites_has_been_updated",
+              CustomNavigator.navigatorState.currentContext!));
+          if (fromAuth) {
+            repo.setLoggedIn();
+            CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
+          }
+        });
+        isSaving = false;
+        notifyListeners();
+      } catch (e) {
+        showToast(e.toString());
+        isSaving = false;
+        notifyListeners();
+      }
+    } else {
+      showToast(
+        getTranslated("you_must_change_something",
+            CustomNavigator.navigatorState.currentContext!),
+      );
     }
   }
 }

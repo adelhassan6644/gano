@@ -42,15 +42,18 @@ class Favourites extends StatelessWidget {
           ),
           bottomNavigationBar:
               Consumer<FavouritesProvider>(builder: (context, provider, child) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
-              ),
-              child: CustomButton(
-                text: getTranslated("save_changes", context),
-                isLoading: provider.isSaving,
-                onTap: () => provider.updateFavourites(fromAuth),
+            return Visibility(
+              visible: !provider.isLoading && !provider.isGetting ,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+                ),
+                child: CustomButton(
+                  text: getTranslated("save_changes", context),
+                  isLoading: provider.isSaving,
+                  onTap: () => provider.updateFavourites(fromAuth),
+                ),
               ),
             );
           }),
