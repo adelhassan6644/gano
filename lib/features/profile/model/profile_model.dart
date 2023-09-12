@@ -4,8 +4,14 @@ class ProfileModel {
   String? email;
   String? phone;
   String? image;
-  int? gender;
+  String? invitationCode;
+  String? blockedReason;
+  String? coins;
+  String? views;
+  String? points;
+  String? weekPoints;
   DateTime? createdAt;
+  bool? hasCategories;
 
   ProfileModel(
       {this.id,
@@ -13,7 +19,13 @@ class ProfileModel {
       this.email,
       this.phone,
       this.image,
-      this.gender,
+      this.invitationCode,
+      this.blockedReason,
+      this.points,
+      this.weekPoints,
+      this.coins,
+      this.views,
+      this.hasCategories,
       this.createdAt});
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -22,10 +34,16 @@ class ProfileModel {
         phone: json["phone"],
         email: json["email"],
         image: json["image"],
-        gender:
-            json["gender"] != null ? int.parse(json["gender"].toString()) : 0,
+        invitationCode: json["invitation_code"],
+        blockedReason: json["blocked_reason"],
+        points: json['points'] != null ? json['points'].toString() : "0",
+        weekPoints:
+            json['week_points'] != null ? json['week_points'].toString() : "0",
+        coins: json['coins'] != null ? json['coins'].toString() : "0",
+        views: json['views'] != null ? json['views'].toString() : "0",
+        hasCategories: json['hasCategories'] == 1 ? true : false,
         createdAt: json["created_at"] == null
-            ? null
+            ? DateTime.now()
             : DateTime.parse(json["created_at"]),
       );
 
@@ -35,7 +53,10 @@ class ProfileModel {
         "email": email,
         "phone": phone,
         "image": image,
-        "gender": gender,
+        "points": points,
+        "week_points": weekPoints,
+        "views": views,
+        "coins": coins,
         "created_at": createdAt?.toIso8601String(),
       };
 }

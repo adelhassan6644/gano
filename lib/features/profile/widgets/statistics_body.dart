@@ -9,26 +9,26 @@ import 'package:provider/provider.dart';
 
 import 'earnings_widget.dart';
 
-class StatisticsBody extends StatelessWidget {
-  const StatisticsBody({Key? key}) : super(key: key);
+class ProfileStatisticsBody extends StatelessWidget {
+  const ProfileStatisticsBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Consumer<ProfileProvider>(builder: (_, provider, child) {
-        return provider.isGetting
+        return provider.isLoading
             ? const _StatisticsBodyShimmer()
             : ListAnimator(
                 data: [
                   SizedBox(height: 24.h),
                   TotalCoinsWidget(
-                    points: provider.statisticsModel?.points ?? "0",
-                    weekPoints: provider.statisticsModel?.weekPoints ?? "0",
+                    points: provider.profileModel?.points ?? "0",
+                    weekPoints: provider.profileModel?.weekPoints ?? "0",
                   ),
                   SizedBox(height: 24.h),
                   EarningsWidget(
-                    coins: provider.statisticsModel?.coins ?? "0",
-                    views: provider.statisticsModel?.views ?? "0",
+                    coins: provider.profileModel?.coins ?? "0",
+                    views: provider.profileModel?.views ?? "0",
                   )
                 ],
               );

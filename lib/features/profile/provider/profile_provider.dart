@@ -13,7 +13,6 @@ import '../../../components/custom_simple_dialog.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/routes.dart';
-import '../model/statistics_model.dart';
 import '../repo/profile_repo.dart';
 
 class ProfileProvider extends ChangeNotifier {
@@ -175,40 +174,40 @@ class ProfileProvider extends ChangeNotifier {
     phoneTEC.text = profileModel?.phone?.trim() ?? "";
   }
 
-  bool isGetting = false;
-  StatisticsModel? statisticsModel;
-  getStatistics() async {
-    try {
-      isGetting = true;
-      notifyListeners();
-
-      Either<ServerFailure, Response> response =
-          await profileRepo.getStatistics();
-
-      response.fold((fail) {
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: fail.error,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Styles.RED_COLOR,
-                isFloating: true));
-      }, (response) {
-        if (response.data['data'] != null) {
-          statisticsModel = StatisticsModel.fromJson(response.data['data']);
-        }
-      });
-      isGetting = false;
-
-      notifyListeners();
-    } catch (e) {
-      isGetting = false;
-      CustomSnackBar.showSnackBar(
-          notification: AppNotification(
-              message: e.toString(),
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Styles.RED_COLOR,
-              isFloating: true));
-      notifyListeners();
-    }
-  }
+  // bool isGetting = false;
+  // StatisticsModel? statisticsModel;
+  // getStatistics() async {
+  //   try {
+  //     isGetting = true;
+  //     notifyListeners();
+  //
+  //     Either<ServerFailure, Response> response =
+  //         await profileRepo.getStatistics();
+  //
+  //     response.fold((fail) {
+  //       CustomSnackBar.showSnackBar(
+  //           notification: AppNotification(
+  //               message: fail.error,
+  //               backgroundColor: Styles.IN_ACTIVE,
+  //               borderColor: Styles.RED_COLOR,
+  //               isFloating: true));
+  //     }, (response) {
+  //       if (response.data['data'] != null) {
+  //         statisticsModel = StatisticsModel.fromJson(response.data['data']);
+  //       }
+  //     });
+  //     isGetting = false;
+  //
+  //     notifyListeners();
+  //   } catch (e) {
+  //     isGetting = false;
+  //     CustomSnackBar.showSnackBar(
+  //         notification: AppNotification(
+  //             message: e.toString(),
+  //             backgroundColor: Styles.IN_ACTIVE,
+  //             borderColor: Styles.RED_COLOR,
+  //             isFloating: true));
+  //     notifyListeners();
+  //   }
+  // }
 }

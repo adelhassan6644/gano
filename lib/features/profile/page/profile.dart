@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gano/app/core/utils/extensions.dart';
-import 'package:gano/components/animated_widget.dart';
 import 'package:gano/features/profile/widgets/profile_image_widget.dart';
 
 import '../../../app/core/utils/images.dart';
@@ -35,9 +34,7 @@ class Profile extends StatelessWidget {
             ),
           ],
         ),
-
-        const StatisticsBody()
-
+        const ProfileStatisticsBody()
       ],
     );
   }
