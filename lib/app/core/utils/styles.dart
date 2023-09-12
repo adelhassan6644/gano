@@ -20,6 +20,7 @@ abstract class Styles {
   static const Color PROGRASS_BACKGROUND = Color(0xffE7E7E7);
   static const Color DISABLED = Color(0xFF969696);
   static const Color WHITE_COLOR = Color(0xFFFFFFFF);
+  static const Color SELECTED_BORER_COLOR = Color(0xFFD9D9F2);
   static const Color SMOKED_WHITE_COLOR = Color(0xFFFBF7F6);
   static const Color OFFER_COLOR = Color(0xff22BB55);
   static const Color LOGOUT_COLOR = Color(0xffDF4759);

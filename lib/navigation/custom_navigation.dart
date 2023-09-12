@@ -1,6 +1,5 @@
 import 'package:gano/features/auth/pages/change_password.dart';
 import 'package:gano/features/auth/pages/reset_password.dart';
-import 'package:gano/features/favourite/page/favourite_page.dart';
 import 'package:gano/features/notifications/page/notifications_page.dart';
 import 'package:gano/features/product_details/page/product_details.dart';
 import 'package:gano/features/profile/page/edit_profile.dart';
@@ -12,6 +11,7 @@ import '../features/auth/pages/login.dart';
 import '../features/auth/pages/register.dart';
 import '../features/auth/pages/verification.dart';
 import '../features/contact_with_us/page/contact_with_us.dart';
+import '../features/favourites/page/favourites.dart';
 import '../features/on_boarding/pages/on_boarding.dart';
 import '../features/setting/pages/about_us.dart';
 import '../features/splash/page/splash.dart';
@@ -66,7 +66,7 @@ abstract class CustomNavigator {
         return _pageRoute(ProductDetails(id: settings.arguments as int));
 
       case Routes.FAVOURITE:
-        return _pageRoute(const FavouritePage());
+        return _pageRoute( Favourites(fromAuth: settings.arguments as bool,));
 
       case Routes.CONTACT_WITH_US:
         return _pageRoute(const ContactWithUs());

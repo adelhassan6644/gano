@@ -182,5 +182,8 @@
   "transfer": "Transfer",
   "earnings": "Earnings",
   "statistics": "Statistics",
-  "video": "Video"
+  "video": "Video",
+  "fav_header": "Choose topics that interest you",
+  "fav_description": "So that it shows you videos that suit your taste",
+  "your_favourites_has_been_updated": "Your favourites has been updated successfully"
 }

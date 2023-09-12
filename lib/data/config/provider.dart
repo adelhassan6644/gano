@@ -6,7 +6,6 @@ import '../../app/localization/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/contact_with_us/provider/contact_with_us_provider.dart';
-import '../../features/favourite/provider/favourite_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
@@ -21,7 +20,6 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<MainPageProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<SplashProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<AuthProvider>()),
-    ChangeNotifierProvider(create: (_) => di.sl<FavouriteProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ProfileProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<HomeProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<NotificationsProvider>()),

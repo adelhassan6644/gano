@@ -3,7 +3,6 @@ import 'package:gano/main_models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
-import 'package:gano/features/favourite/widgets/favourite_button.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../components/custom_button.dart';
@@ -91,7 +90,6 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(top: -10, left: -10, child: FavouriteButton(id: product.id))
       ],
     );
   }

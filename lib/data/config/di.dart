@@ -9,8 +9,8 @@ import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/contact_with_us/provider/contact_with_us_provider.dart';
 import '../../features/contact_with_us/repo/contact_with_us_repo.dart';
-import '../../features/favourite/provider/favourite_provider.dart';
-import '../../features/favourite/repo/favourite_repo.dart';
+import '../../features/favourites/provider/favourites_provider.dart';
+import '../../features/favourites/repo/favourites_repo.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/invitation/repo/invitation_repo.dart';
 import '../../features/ratting/provider/ratting_provider.dart';
@@ -78,7 +78,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SplashProvider(splashRepo: sl()));
   sl.registerLazySingleton(() => MainPageProvider());
   sl.registerLazySingleton(() => AuthProvider(authRepo: sl()));
-  sl.registerLazySingleton(() => FavouriteProvider(favouriteRepo: sl()));
   sl.registerLazySingleton(() => HomeProvider(homeRepo: sl()));
   sl.registerLazySingleton(() => ReservationsProvider(repo: sl()));
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));

@@ -15,6 +15,7 @@ class EndPoints {
   static getProfile(id) => 'client/$id';
   static getStatistics(id) => 'statistics/$id';
   static updateProfile(id) => 'client/$id';
+  static const String getFavouriteItems = 'favorites';
   static getFavourites(id) => 'favorites/$id';
   static getNotifications(id) => 'notification/$id';
   static readNotification(userId, id) => 'notification/read/$userId/$id';

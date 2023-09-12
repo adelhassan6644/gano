@@ -181,6 +181,9 @@
   "earnings": "الأرباح",
   "transfer": "تحويل",
   "statistics": "الأحصائيات",
-  "video": "فديو"
+  "video": "فديو",
+  "fav_header": "قم بأختيار المواضيع التي تهمك",
+  "fav_description": "حتى تظهر لك مقاطع الفيديو التي تناسب ذوقك",
+  "your_favourites_has_been_updated": "تم تحديث اهتمامتك بنجاح"
 
 }

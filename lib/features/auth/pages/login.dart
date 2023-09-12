@@ -35,8 +35,6 @@ class _LoginState extends State<Login> {
               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
           child: Column(
             children: [
-              // Visibility(visible: widget.fromMain, child: const CustomAppBar()),
-
               Consumer<AuthProvider>(builder: (_, provider, child) {
                 return Expanded(
                   child: ListAnimator(
@@ -78,14 +76,6 @@ class _LoginState extends State<Login> {
                                 valid: Validations.mail,
                                 pSvgIcon: SvgImages.mailIcon,
                               ),
-
-                              // CustomTextFormField(
-                              //   controller: provider.phoneTEC,
-                              //   hint: getTranslated("phone_number", context),
-                              //   inputType: TextInputType.phone,
-                              //   valid: Validations.phone,
-                              //   pSvgIcon: SvgImages.phoneIcon,
-                              // ),
                               CustomTextFormField(
                                 keyboardAction: TextInputAction.done,
                                 controller: provider.passwordTEC,
@@ -133,7 +123,6 @@ class _LoginState extends State<Login> {
                                         provider.logIn();
                                       }
                                       // CustomNavigator.push(Routes.DASHBOARD,arguments: 0,clean: true);
-
                                     },
                                     isLoading: provider.isLoading),
                               ),

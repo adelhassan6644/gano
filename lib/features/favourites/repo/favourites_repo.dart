@@ -18,13 +18,16 @@ class FavouriteRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
-  Future<Either<ServerFailure, Response>> updateFavourite(id) async {
+  String? getUserId() {
+    return sharedPreferences.getString(AppStorageKey.userId);
+  }
+
+  Future<Either<ServerFailure, Response>> updateFavourite(body) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.postFavourite, data: {
-        "client_id": sharedPreferences.getString(AppStorageKey.userId),
-        "sub_service_id": id
-      });
+      Response response = await dioClient.post(
+        uri: EndPoints.postFavourite,
+        data: body,
+      );
 
       if (response.statusCode == 200) {
         return Right(response);
@@ -41,6 +44,21 @@ class FavouriteRepo {
       Response response = await dioClient.get(
         uri: EndPoints.getFavourites(
             sharedPreferences.getString(AppStorageKey.userId)),
+      );
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(response.data['message']));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }
+
+  Future<Either<ServerFailure, Response>> getItems() async {
+    try {
+      Response response = await dioClient.get(
+        uri: EndPoints.getFavouriteItems,
       );
       if (response.statusCode == 200) {
         return Right(response);
