@@ -1,4 +1,3 @@
-import 'package:gano/components/animated_widget.dart';
 import 'package:gano/components/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gano/app/core/utils/dimensions.dart';
@@ -25,19 +24,21 @@ class Favourites extends StatelessWidget {
           ..getFavourites(),
         child: Scaffold(
           appBar: fromAuth ? null : const CustomAppBar(),
-          body: ListAnimator(
-            customPadding: EdgeInsets.symmetric(
+          body: Padding(
+            padding: EdgeInsets.symmetric(
                 horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-            data: [
-              Visibility(
-                visible: fromAuth,
-                child: SizedBox(
-                  height: 24.h,
+            child: Column(
+              children: [
+                Visibility(
+                  visible: fromAuth,
+                  child: SizedBox(
+                    height: 24.h,
+                  ),
                 ),
-              ),
-              const FavouriteHeaderWidget(),
-              const FavouriteBody(),
-            ],
+                const FavouriteHeaderWidget(),
+                const FavouriteBody(),
+              ],
+            ),
           ),
           bottomNavigationBar:
               Consumer<FavouritesProvider>(builder: (context, provider, child) {

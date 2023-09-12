@@ -74,7 +74,7 @@ class FavouritesProvider extends ChangeNotifier {
     try {
       isGetting = true;
       notifyListeners();
-      Either<ServerFailure, Response> response = await repo.getItems();
+      Either<ServerFailure, Response> response = await repo.getCategories();
       response.fold((l) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -106,10 +106,12 @@ class FavouritesProvider extends ChangeNotifier {
       isSaving = true;
       notifyListeners();
 
-      var body = {"user_id": repo.getUserId()};
-      for (int i = 0; i < favouritesId.length; i++) {
-        body.addAll({'id[$i]': "${favouritesId[i]}"});
-      }
+      // var body = {"user_id": repo.getUserId()};
+      // for (int i = 0; i < favouritesId.length; i++) {
+      //   body.addAll({'id[$i]': "${favouritesId[i]}"});
+      // }
+
+      var body = {"categories": favouritesId};
 
       Either<ServerFailure, Response> response =
           await repo.updateFavourite(body);

@@ -48,11 +48,17 @@ class FavouriteBody extends StatelessWidget {
                     onRefresh: () async {
                       provider.getFavourites();
                     },
-                    child: const ListAnimator(
-                      data: [
-                        EmptyState(
-                          spaceBtw: 12,
-                          txt: "لا يوجد مواضيع حاليا",
+                    child: const Column(
+                      children: [
+                        Expanded(
+                          child: ListAnimator(
+                            data: [
+                              EmptyState(
+                                spaceBtw: 12,
+                                txt: "لا يوجد مواضيع حاليا",
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

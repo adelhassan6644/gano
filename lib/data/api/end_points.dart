@@ -2,7 +2,8 @@ class EndPoints {
   static const String baseUrl = 'https://gano.softwarecloud2.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
   static const String imageUrl = 'https://massage-app.softwarecloud2.com/';
-  static const String apiKey = 's7xrpFdw4G0F21rfLyD4TaBkjVJYgwGfI3y458ejWjw9zOggruX30e1as2d3';
+  static const String apiKey =
+      's7xrpFdw4G0F21rfLyD4TaBkjVJYgwGfI3y458ejWjw9zOggruX30e1as2d3';
   static const String topic = 'gano';
   static const String logIn = 'login';
   static const String register = 'client';
@@ -15,8 +16,7 @@ class EndPoints {
   static getProfile(id) => 'client/$id';
   static getStatistics(id) => 'statistics/$id';
   static updateProfile(id) => 'client/$id';
-  static const String getFavouriteItems = 'favorites';
-  static getFavourites(id) => 'favorites/$id';
+  static const String categories = 'category';
   static getNotifications(id) => 'notification/$id';
   static readNotification(userId, id) => 'notification/read/$userId/$id';
   static deleteNotification(userId, id) => 'notification/delete/$userId/$id';
@@ -26,7 +26,8 @@ class EndPoints {
   static cancelReservation(id) => 'reservation/$id';
   static nextReservations(id) => 'next/reservation/$id';
   static previousReservations(id) => 'past/reservation/$id';
-  static const String postFavourite = 'favorite';
+  static updateFavourite(id) => 'add/categories/$id';
+  static getFavourites(id) => 'client/categories/$id';
   static const String category = 'service';
   static const products = 'subService';
   static categoryProducts(id) => 'service/$id';

@@ -25,7 +25,7 @@ class FavouriteRepo {
   Future<Either<ServerFailure, Response>> updateFavourite(body) async {
     try {
       Response response = await dioClient.post(
-        uri: EndPoints.postFavourite,
+        uri: EndPoints.updateFavourite(1),
         data: body,
       );
 
@@ -42,8 +42,7 @@ class FavouriteRepo {
   Future<Either<ServerFailure, Response>> getFavourites() async {
     try {
       Response response = await dioClient.get(
-        uri: EndPoints.getFavourites(
-            sharedPreferences.getString(AppStorageKey.userId)),
+        uri: EndPoints.getFavourites(1),
       );
       if (response.statusCode == 200) {
         return Right(response);
@@ -55,10 +54,10 @@ class FavouriteRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getItems() async {
+  Future<Either<ServerFailure, Response>> getCategories() async {
     try {
       Response response = await dioClient.get(
-        uri: EndPoints.getFavouriteItems,
+        uri: EndPoints.categories,
       );
       if (response.statusCode == 200) {
         return Right(response);
