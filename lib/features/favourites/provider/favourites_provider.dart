@@ -107,7 +107,7 @@ class FavouritesProvider extends ChangeNotifier {
 
   bool isSaving = false;
   updateFavourites(bool fromAuth) async {
-    if (isChanged) {
+    {
       try {
         isSaving = true;
         notifyListeners();
@@ -134,11 +134,6 @@ class FavouritesProvider extends ChangeNotifier {
         isSaving = false;
         notifyListeners();
       }
-    } else {
-      showToast(
-        getTranslated("you_must_change_something",
-            CustomNavigator.navigatorState.currentContext!),
-      );
     }
   }
 }

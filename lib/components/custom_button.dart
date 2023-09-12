@@ -23,6 +23,7 @@ class CustomButton extends StatelessWidget {
   final double? radius;
   final double? iconSize;
   final bool isLoading;
+  final bool isActive;
   final bool isError;
   final bool withBorderColor;
   final bool withShadow;
@@ -39,6 +40,7 @@ class CustomButton extends StatelessWidget {
       this.svgIcon,
       this.assetIcon,
       this.isLoading = false,
+      this.isActive = true,
       this.textColor,
       this.borderColor,
       this.width,
@@ -57,7 +59,7 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
-          if (onTap != null && !isLoading) {
+          if (onTap != null && !isLoading && isActive) {
             onTap!();
           }
         },
@@ -66,7 +68,8 @@ class CustomButton extends StatelessWidget {
           height: height ?? 50.h,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           decoration: BoxDecoration(
-            color: backgroundColor,
+            color:
+                isActive ? backgroundColor : backgroundColor.withOpacity(0.5),
             boxShadow: withShadow
                 ? [
                     BoxShadow(
@@ -112,14 +115,14 @@ class CustomButton extends StatelessWidget {
                           color: textColor ?? Styles.WHITE_COLOR,
                         ),
                       ),
-                        Visibility(
-                          visible: assetIcon != null ||
-                              svgIcon != null ||
-                              lIconWidget != null,
-                          child: SizedBox(
-                            width: 8.w,
-                          ),
+                      Visibility(
+                        visible: assetIcon != null ||
+                            svgIcon != null ||
+                            lIconWidget != null,
+                        child: SizedBox(
+                          width: 8.w,
                         ),
+                      ),
                       Visibility(
                           visible: lIconWidget != null,
                           child: lIconWidget ?? const SizedBox()),
