@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../../data/config/di.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_banners.dart';
-import '../widgets/home_products.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,8 +19,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   void initState() {
     Future.delayed(Duration.zero, () {
       // sl<HomeProvider>().scroll(controller);
-      sl<HomeProvider>().getBanners();
-      // sl<HomeProvider>().getAds();
     });
     super.initState();
   }

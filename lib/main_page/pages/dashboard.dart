@@ -6,6 +6,7 @@ import '../../../app/core/utils/styles.dart';
 import '../../data/config/di.dart';
 import '../../data/network/network_info.dart';
 import '../../features/home/page/home.dart';
+import '../../features/home/provider/home_provider.dart';
 import '../../features/more/page/more.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/statistics/page/statistics.dart';
@@ -21,7 +22,8 @@ class _DashBoardState extends State<DashBoard> {
   @override
   void initState() {
     NetworkInfo.checkConnectivity();
-    // sl<HomeProvider>().getCategories();
+    sl<HomeProvider>().getBanners();
+    // sl<HomeProvider>().getAds();
     sl<ProfileProvider>().getProfile();
     sl<MainPageProvider>().updateDashboardIndex(0);
 
@@ -31,7 +33,7 @@ class _DashBoardState extends State<DashBoard> {
   Widget fragment(int index) {
     switch (index) {
       case 0:
-        return  const Home();
+        return const Home();
       case 1:
         return const Statistics();
       case 2:
