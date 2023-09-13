@@ -47,12 +47,17 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainPageProvider>(builder: (_, provider, child) {
-      return Scaffold(
+    return SafeArea(
+      top: false,
+      child: Scaffold(
         backgroundColor: Styles.SCAFFOLD_BG,
         bottomNavigationBar: const NavBar(),
-        body: fragment(provider.selectedIndex),
-      );
-    });
+        body: Consumer<MainPageProvider>(builder: (_, provider, child) {
+          return fragment(provider.selectedIndex);
+        }
+        ),
+      ),
+    );
+
   }
 }
