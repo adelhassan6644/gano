@@ -24,6 +24,7 @@ class _DashBoardState extends State<DashBoard> {
     NetworkInfo.checkConnectivity();
     sl<HomeProvider>().getBanners();
     // sl<HomeProvider>().getAds();
+    // sl<StatisticsProvider>().getMonthlyStatistics();
     sl<ProfileProvider>().getProfile();
     sl<MainPageProvider>().updateDashboardIndex(0);
 

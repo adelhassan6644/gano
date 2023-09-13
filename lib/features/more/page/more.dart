@@ -10,26 +10,23 @@ class More extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-          Dimensions.PADDING_SIZE_DEFAULT,
-          (Dimensions.PADDING_SIZE_DEFAULT + context.toPadding),
-          Dimensions.PADDING_SIZE_DEFAULT,
-          Dimensions.PADDING_SIZE_DEFAULT),
-      child: const Column(
-        children: [
-          ProfileCard(),
-          Expanded(
-            child: ListAnimator(
-              data: [
-                SizedBox(
-                  height: 24,
-                ),
-                MoreBodyWidget(),
-              ],
-            ),
-          )
-        ],
+    return SafeArea(
+      child: Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+        child: const Column(
+          children: [
+            ProfileCard(),
+            Expanded(
+              child: ListAnimator(
+                data: [
+                  SizedBox(height: 24),
+                  MoreBodyWidget(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

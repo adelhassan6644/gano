@@ -13,12 +13,12 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(
-          title: getTranslated("edit_profile", context),
-        ),
-        body: Consumer<ProfileProvider>(builder: (_, provider, child) {
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: getTranslated("edit_profile", context),
+      ),
+      body: SafeArea(
+        child: Consumer<ProfileProvider>(builder: (_, provider, child) {
           return const Column(
             children: [
               Expanded(

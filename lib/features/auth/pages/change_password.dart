@@ -26,12 +26,12 @@ class _ChangePasswordState extends State<ChangePassword> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(
-          title: getTranslated("change_password_header", context),
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: getTranslated("change_password_header", context),
+      ),
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
               child: Consumer<AuthProvider>(builder: (_, provider, child) {

@@ -26,10 +26,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const CustomAppBar(),
-        body: Column(
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
                 child: Consumer<AuthProvider>(builder: (_, provider, child) {

@@ -19,7 +19,6 @@ class _StatisticsState extends State<Statistics>
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      sl<StatisticsProvider>().getMonthlyStatistics();
       sl<StatisticsProvider>().scroll(controller);
     });
 
