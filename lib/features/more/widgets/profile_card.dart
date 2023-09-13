@@ -87,7 +87,7 @@ class _ProfileCardState extends State<ProfileCard> {
                   const SizedBox(width: 12),
                   AnimatedRotation(
                     duration: const Duration(milliseconds: 500),
-                    turns: isExpanded ? 0 : .5,
+                    turns: isExpanded ? 0.5 : 0,
                     child: customImageIconSVG(
                       imageName: SvgImages.openButton,
                     ),

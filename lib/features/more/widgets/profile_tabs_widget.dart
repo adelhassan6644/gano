@@ -22,7 +22,8 @@ class ProfileTabs extends StatelessWidget {
           MoreButton(
             title: getTranslated("favourite", context),
             icon: SvgImages.moreIcon,
-            onTap: () => CustomNavigator.push(Routes.FAVOURITE,arguments: false),
+            onTap: () =>
+                CustomNavigator.push(Routes.FAVOURITE, arguments: false),
             isProfileTab: true,
           ),
           MoreButton(

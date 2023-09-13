@@ -27,7 +27,7 @@ class NavBar extends StatelessWidget {
               ],
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(25), topLeft: Radius.circular(25))),
-          padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 12.h),
+          padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 24.h),
           child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

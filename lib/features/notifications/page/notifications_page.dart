@@ -21,122 +21,118 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Styles.SCAFFOLD_BG,
-        body: Column(
-          children: [
-            CustomAppBar(
-              title: getTranslated("notifications", context),
-            ),
-            Expanded(
-                child: ChangeNotifierProvider(
-              create: (_) =>
-                  NotificationsProvider(repo: sl<NotificationsRepo>())
-                    ..getNotifications(),
-              child: Consumer<NotificationsProvider>(
-                  builder: (_, provider, child) {
-                return provider.isLoading
-                    ? ListAnimator(
-                        customPadding: EdgeInsets.symmetric(
-                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                        data: List.generate(
-                            10,
-                            (index) => Padding(
-                                  padding: const EdgeInsets.only(
-                                      bottom: Dimensions.PADDING_SIZE_SMALL),
-                                  child: CustomShimmerContainer(
-                                    width: context.width,
-                                    height: 60,
-                                    radius: 12,
-                                  ),
-                                )))
-                    : provider.model != null &&
-                            provider.model?.data != null &&
-                            provider.model!.data!.isNotEmpty
-                        ? RefreshIndicator(
-                            color: Styles.PRIMARY_COLOR,
-                            onRefresh: () async {
-                              provider.getNotifications();
-                            },
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ListAnimator(
-                                      customPadding: EdgeInsets.symmetric(
-                                          horizontal: Dimensions
-                                              .PADDING_SIZE_DEFAULT.w),
-                                      data: List.generate(
-                                          provider.model?.data?.length ?? 0,
-                                          (index) => Dismissible(
-                                                background: Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    CustomButton(
-                                                      width: 100.w,
-                                                      height: 30.h,
-                                                      text: getTranslated(
-                                                          "delete", context),
-                                                      svgIcon: SvgImages.cancel,
-                                                      iconSize: 12,
-                                                      iconColor:
-                                                          Styles.IN_ACTIVE,
-                                                      textColor:
-                                                          Styles.IN_ACTIVE,
-                                                      backgroundColor: Styles
-                                                          .IN_ACTIVE
-                                                          .withOpacity(0.12),
-                                                    ),
-                                                  ],
-                                                ),
-                                                key: ValueKey(index),
-                                                confirmDismiss:
-                                                    (DismissDirection
-                                                        direction) async {
-                                                  provider.deleteNotification(
-                                                      provider
-                                                              .model
-                                                              ?.data?[index]
-                                                              .id ??
-                                                          0);
-                                                  return false;
-                                                },
-                                                child: NotificationCard(
-                                                  notification: provider
-                                                      .model?.data?[index],
-                                                ),
-                                              ))),
+    return Scaffold(
+      appBar: CustomAppBar(title: getTranslated("notifications", context)),
+      body: Column(
+        children: [
+          Expanded(
+              child: ChangeNotifierProvider(
+            create: (_) => NotificationsProvider(repo: sl<NotificationsRepo>())
+              ..getNotifications(),
+            child:
+                Consumer<NotificationsProvider>(builder: (_, provider, child) {
+              return provider.isLoading
+                  ? ListAnimator(
+                      customPadding: EdgeInsets.fromLTRB(
+                          Dimensions.PADDING_SIZE_DEFAULT.w,
+                          Dimensions.PADDING_SIZE_DEFAULT.h,
+                          Dimensions.PADDING_SIZE_DEFAULT.w,
+                          0),
+                      data: List.generate(
+                          10,
+                          (index) => Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: Dimensions.PADDING_SIZE_SMALL),
+                                child: CustomShimmerContainer(
+                                  width: context.width,
+                                  height: 60,
+                                  radius: 12,
                                 ),
-                              ],
-                            ),
-                          )
-                        : RefreshIndicator(
-                            color: Styles.PRIMARY_COLOR,
-                            onRefresh: () async {
-                              provider.getNotifications();
-                            },
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ListAnimator(
-                                      customPadding: EdgeInsets.symmetric(
-                                          horizontal: Dimensions
-                                              .PADDING_SIZE_DEFAULT.w),
-                                      data: const [
-                                        EmptyState(
-                                          txt: "لا يوجد اشعارات حاليا",
-                                          spaceBtw: 50,
-                                        )
-                                      ]),
-                                ),
-                              ],
-                            ),
-                          );
-              }),
-            ))
-          ],
-        ),
+                              )))
+                  : provider.model != null &&
+                          provider.model?.data != null &&
+                          provider.model!.data!.isNotEmpty
+                      ? RefreshIndicator(
+                          color: Styles.PRIMARY_COLOR,
+                          onRefresh: () async {
+                            provider.getNotifications();
+                          },
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: ListAnimator(
+                                    customPadding: EdgeInsets.fromLTRB(
+                                        Dimensions.PADDING_SIZE_DEFAULT.w,
+                                        Dimensions.PADDING_SIZE_DEFAULT.h,
+                                        Dimensions.PADDING_SIZE_DEFAULT.w,
+                                        0),
+                                    data: List.generate(
+                                        provider.model?.data?.length ?? 0,
+                                        (index) => Dismissible(
+                                              background: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  CustomButton(
+                                                    width: 100.w,
+                                                    height: 30.h,
+                                                    text: getTranslated(
+                                                        "delete", context),
+                                                    svgIcon: SvgImages.cancel,
+                                                    iconSize: 12,
+                                                    iconColor: Styles.IN_ACTIVE,
+                                                    textColor: Styles.IN_ACTIVE,
+                                                    backgroundColor: Styles
+                                                        .IN_ACTIVE
+                                                        .withOpacity(0.12),
+                                                  ),
+                                                ],
+                                              ),
+                                              key: ValueKey(index),
+                                              confirmDismiss: (DismissDirection
+                                                  direction) async {
+                                                provider.deleteNotification(
+                                                    provider.model?.data?[index]
+                                                            .id ??
+                                                        0);
+                                                return false;
+                                              },
+                                              child: NotificationCard(
+                                                notification: provider
+                                                    .model?.data?[index],
+                                              ),
+                                            ))),
+                              ),
+                            ],
+                          ),
+                        )
+                      : RefreshIndicator(
+                          color: Styles.PRIMARY_COLOR,
+                          onRefresh: () async {
+                            provider.getNotifications();
+                          },
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: ListAnimator(
+                                    customPadding: EdgeInsets.fromLTRB(
+                                        Dimensions.PADDING_SIZE_DEFAULT.w,
+                                        Dimensions.PADDING_SIZE_DEFAULT.h,
+                                        Dimensions.PADDING_SIZE_DEFAULT.w,
+                                        0),
+                                    data: const [
+                                      EmptyState(
+                                        txt: "لا يوجد اشعارات حاليا",
+                                        spaceBtw: 50,
+                                      )
+                                    ]),
+                              ),
+                            ],
+                          ),
+                        );
+            }),
+          ))
+        ],
       ),
     );
   }
