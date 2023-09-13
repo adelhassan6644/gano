@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,33 +43,39 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBaChJejOmczcKCpPv9kzfTbaIEI4Irw-s',
+    appId: '1:698477000967:web:ac17ca8ff9877d9523eda2',
+    messagingSenderId: '698477000967',
+    projectId: 'gano-15bfd',
+    authDomain: 'gano-15bfd.firebaseapp.com',
+    storageBucket: 'gano-15bfd.appspot.com',
+    measurementId: 'G-Y22G46WJDF',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAOWmbF37VFk5PSkGMtrIaZUUjLl9oP9vU',
-    appId: '1:709889896038:android:3d711d3e6f14aa04e8c7a7',
-    messagingSenderId: '709889896038',
-    projectId: 'gano-50155',
-    storageBucket: 'gano-50155.appspot.com',
+    apiKey: 'AIzaSyAuJ2-A8vfrA2qXFd2GwM1F-KIjuPS9Dlo',
+    appId: '1:698477000967:android:7addc0c8834177d823eda2',
+    messagingSenderId: '698477000967',
+    projectId: 'gano-15bfd',
+    storageBucket: 'gano-15bfd.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDBAunecIZ7Xtx68YQjX2KBycLob1fxb5s',
-    appId: '1:709889896038:ios:4c0afca66fcdf8d7e8c7a7',
-    messagingSenderId: '709889896038',
-    projectId: 'gano-50155',
-    storageBucket: 'gano-50155.appspot.com',
-    iosClientId:
-        '709889896038-9fg69ave8j4449800bk2stms69a0r9fe.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCKhzmUIxTImqvmjHLoSo59tjMW_lIt2z4',
+    appId: '1:698477000967:ios:0be567c0c7bf0b9f23eda2',
+    messagingSenderId: '698477000967',
+    projectId: 'gano-15bfd',
+    storageBucket: 'gano-15bfd.appspot.com',
     iosBundleId: 'com.softwareGano.gano',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDBAunecIZ7Xtx68YQjX2KBycLob1fxb5s',
-    appId: '1:709889896038:ios:cdc7a65f6fc9642fe8c7a7',
-    messagingSenderId: '709889896038',
-    projectId: 'gano-50155',
-    storageBucket: 'gano-50155.appspot.com',
-    iosClientId:
-        '709889896038-nkarp2qe4glgl58fq5um25umfmqlq806.apps.googleusercontent.com',
-    iosBundleId: 'n',
+    apiKey: 'AIzaSyCKhzmUIxTImqvmjHLoSo59tjMW_lIt2z4',
+    appId: '1:698477000967:ios:0be567c0c7bf0b9f23eda2',
+    messagingSenderId: '698477000967',
+    projectId: 'gano-15bfd',
+    storageBucket: 'gano-15bfd.appspot.com',
+    iosBundleId: 'com.softwareGano.gano',
   );
 }
