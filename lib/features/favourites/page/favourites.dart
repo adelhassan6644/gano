@@ -24,20 +24,22 @@ class Favourites extends StatelessWidget {
         ..getFavourites(),
       child: Scaffold(
         appBar: fromAuth ? null : const CustomAppBar(),
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-          child: Column(
-            children: [
-              Visibility(
-                visible: fromAuth,
-                child: SizedBox(
-                  height: 24.h
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+            child: Column(
+              children: [
+                Visibility(
+                  visible: fromAuth,
+                  child: SizedBox(
+                    height: 24.h
+                  ),
                 ),
-              ),
-              const FavouriteHeaderWidget(),
-              const FavouriteBody(),
-            ],
+                const FavouriteHeaderWidget(),
+                const FavouriteBody(),
+              ],
+            ),
           ),
         ),
         bottomNavigationBar:
