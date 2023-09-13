@@ -34,9 +34,9 @@ class _DashBoardState extends State<DashBoard> {
   Widget fragment(int index) {
     switch (index) {
       case 0:
-        return const Home();
+        return const SizedBox();
       case 1:
-        return const Statistics();
+        return const SizedBox();
       case 2:
         return const Profile();
       case 3:
