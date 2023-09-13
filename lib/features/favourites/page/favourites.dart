@@ -43,7 +43,7 @@ class Favourites extends StatelessWidget {
           bottomNavigationBar:
               Consumer<FavouritesProvider>(builder: (context, provider, child) {
             return Visibility(
-              visible: !provider.isLoading && !provider.isGetting ,
+              visible: !provider.isLoading && !provider.isGetting,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -52,7 +52,8 @@ class Favourites extends StatelessWidget {
                 child: CustomButton(
                   text: getTranslated("save_changes", context),
                   isLoading: provider.isSaving,
-                  isActive: provider.isChanged,
+                  isActive:
+                      provider.isChanged && provider.favouritesId.isNotEmpty,
                   onTap: () => provider.updateFavourites(fromAuth),
                 ),
               ),

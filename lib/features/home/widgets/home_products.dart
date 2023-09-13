@@ -126,7 +126,7 @@ class HomeProducts extends StatelessWidget {
                   : RefreshIndicator(
                       color: Styles.PRIMARY_COLOR,
                       onRefresh: () async {
-                        provider.getProducts();
+                        provider.getAds();
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(

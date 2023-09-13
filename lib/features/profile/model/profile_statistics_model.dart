@@ -1,17 +1,17 @@
-class StatisticsModel {
+class ProfileStatisticsModel {
   String? coins;
   String? views;
   String? points;
   String? weekPoints;
 
-  StatisticsModel({
+  ProfileStatisticsModel({
     this.points,
     this.weekPoints,
     this.coins,
     this.views,
   });
 
-  StatisticsModel.fromJson(Map<String, dynamic> json) {
+  ProfileStatisticsModel.fromJson(Map<String, dynamic> json) {
     points = json['points'] != null? json['points'].toString():"0";
     weekPoints = json['week_points'] != null? json['week_points'].toString():"0";
     coins =  json['coins'] != null? json['coins'].toString():"0";

@@ -34,7 +34,7 @@ abstract class Styles {
   static const Color HEADER = Color(0xFF000000);
   static const Color TITLE = Color(0xFF2B2B2B);
   static const Color SUBTITLE = Color(0xff777777);
-  static const Color DETAILS_COLOR = Color(0xff9D9D9D);
+  static const Color DETAILS_COLOR = Color(0xffAEAEAE);
   static const Color HINT_COLOR = Color(0xffA5B7B8);
 
   static const Color SPLASH_BACKGROUND_COLOR = Color(0xff);

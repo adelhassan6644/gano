@@ -35,7 +35,7 @@ class HomeProvider extends ChangeNotifier {
   late int currentTab = 0;
   void selectTab(v) {
     currentTab = v;
-    getProducts();
+    getAds();
     notifyListeners();
   }
 
@@ -85,10 +85,11 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  BannerModel? bannerModel;
+  List<BannerModel>? banners;
   bool isGetBanners = false;
   getBanners() async {
     try {
+      banners?.clear();
       isGetBanners = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await homeRepo.getHomeBanner();
@@ -102,7 +103,10 @@ class HomeProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
         notifyListeners();
       }, (success) {
-        bannerModel = BannerModel.fromJson(success.data);
+        if (success.data["data"] != null) {
+          banners = List<BannerModel>.from(
+              success.data["data"].map((x) => BannerModel.fromJson(x)));
+        }
         isGetBanners = false;
         notifyListeners();
       });
@@ -120,7 +124,7 @@ class HomeProvider extends ChangeNotifier {
 
   List<ItemModel> products = [];
   bool isGetProducts = false;
-  getProducts() async {
+  getAds() async {
     try {
       isGetProducts = true;
       products = [];

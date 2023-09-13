@@ -1,24 +1,30 @@
-import 'package:gano/app/core/utils/app_storage_keys.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
 import '../../../data/dio/dio_client.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 
-class RattingRepo {
+class StatisticsRepo {
   final DioClient dioClient;
   final SharedPreferences sharedPreferences;
 
-  RattingRepo({required this.dioClient, required this.sharedPreferences});
+  StatisticsRepo({required this.dioClient, required this.sharedPreferences});
 
-  getUserId() => sharedPreferences.getString(AppStorageKey.userId);
+  bool isLoggedIn() {
+    return sharedPreferences.containsKey(AppStorageKey.isLogin);
+  }
 
-  Future<Either<ServerFailure, Response>> sendRatting(body) async {
+  bool isMe(id) {
+    return sharedPreferences.getString(AppStorageKey.userId) == id;
+  }
+
+  Future<Either<ServerFailure, Response>> getMonthlyStatistics() async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.ratting, data: body);
+      Response response = await dioClient.get(uri: EndPoints.monthlyStatistics);
       if (response.statusCode == 200) {
         return Right(response);
       } else {

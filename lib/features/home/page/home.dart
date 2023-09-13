@@ -2,8 +2,6 @@ import 'package:gano/app/core/utils/styles.dart';
 import 'package:gano/features/home/provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import '../../../data/config/di.dart';
-import '../../reservations/provider/reservations_provider.dart';
-import '../widgets/home_dates.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_banners.dart';
 import '../widgets/home_products.dart';
@@ -21,9 +19,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      sl<HomeProvider>().scroll(controller);
+      // sl<HomeProvider>().scroll(controller);
       sl<HomeProvider>().getBanners();
-      sl<HomeProvider>().getProducts();
+      // sl<HomeProvider>().getAds();
     });
     super.initState();
   }
@@ -42,8 +40,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
               color: Styles.PRIMARY_COLOR,
               onRefresh: () async {
                 sl<HomeProvider>().getBanners();
-                sl<ReservationsProvider>().getNextReservations();
-                sl<HomeProvider>().getProducts();
+                // sl<HomeProvider>().getAds();
               },
               child: Column(
                 children: [
@@ -54,8 +51,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                       padding: EdgeInsets.zero,
                       children: const [
                         HomeBanner(),
-                        HomeDates(),
-                        HomeProducts()
+                        // HomeProducts(),
                       ],
                     ),
                   ),

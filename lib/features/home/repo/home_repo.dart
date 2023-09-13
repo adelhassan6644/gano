@@ -20,7 +20,7 @@ class HomeRepo {
 
   Future<Either<ServerFailure, Response>> getHomeCategory() async {
     try {
-      Response response = await dioClient.get(uri: EndPoints.category);
+      Response response = await dioClient.get(uri: "");
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -47,7 +47,7 @@ class HomeRepo {
   Future<Either<ServerFailure, Response>> getHomeProducts(id) async {
     try {
       Response response = await dioClient.get(
-          uri: id == 0 ? EndPoints.products : EndPoints.categoryProducts(id));
+          uri: "");
       if (response.statusCode == 200) {
         return Right(response);
       } else {

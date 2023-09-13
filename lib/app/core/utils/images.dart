@@ -6,6 +6,7 @@ class Images {
   static const String authImage = 'assets/images/auth.png';
   static const String splashImage = 'assets/images/splash.png';
   static const String profileBGImage = 'assets/images/profile_bg.png';
+  static const String statisticsBGImage = 'assets/images/statistics_bg.png';
   static const String developerImage = 'assets/images/developer_image.png';
   static const String check = 'assets/images/check_circle.png';
   static const String success = 'assets/images/success.png';

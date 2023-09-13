@@ -4,6 +4,7 @@
   "more": "More",
   "skip": "Skip",
   "login_header" : "Welcome back",
+  "welcome" : "Welcome",
   "on_boarding_header": "You always pay money to not see ads, but what if it's the other way around?",
   "on_boarding_description_1": "The issue is simple with Gano\u000B you will earn from watching the ads",
   "on_boarding_description_2": "Register, watch, vote, and play with us",
@@ -185,5 +186,8 @@
   "video": "Video",
   "fav_header": "Choose topics that interest you",
   "fav_description": "So that it shows you videos that suit your taste",
-  "your_favourites_has_been_updated": "Your favourites has been updated successfully"
+  "your_favourites_has_been_updated": "Your favourites has been updated successfully",
+  "view": "view",
+  "statistics_header": "The 10 most profitable this month",
+  "excited_for_what_you_will_see_today": "Excited for what you will see today!"
 }

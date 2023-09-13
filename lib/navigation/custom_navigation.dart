@@ -1,7 +1,6 @@
 import 'package:gano/features/auth/pages/change_password.dart';
 import 'package:gano/features/auth/pages/reset_password.dart';
 import 'package:gano/features/notifications/page/notifications_page.dart';
-import 'package:gano/features/product_details/page/product_details.dart';
 import 'package:gano/features/profile/page/edit_profile.dart';
 import 'package:gano/features/setting/pages/terms.dart';
 import 'package:gano/main_page/pages/dashboard.dart';
@@ -61,9 +60,6 @@ abstract class CustomNavigator {
       case Routes.VERIFICATION:
         return _pageRoute(
             Verification(fromRegister: settings.arguments as bool));
-
-      case Routes.PRODUCT_DETAILS:
-        return _pageRoute(ProductDetails(id: settings.arguments as int));
 
       case Routes.FAVOURITE:
         return _pageRoute( Favourites(fromAuth: settings.arguments as bool,));

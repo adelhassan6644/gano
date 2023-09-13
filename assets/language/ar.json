@@ -19,6 +19,7 @@
   "check_the_mail_description": "قمنا بإرسال رمز إعادة تعيين كلمة المرور.\u2028 تفقد بريدك الإلكتروني",
   "of_gano": "الخاصة بجانو",
   "welcome_description": "مرحبا, تسعدنا عودتك ",
+  "welcome": "مرحبا",
   "mail": "البريد الإلكتروني",
   "change_password": "تغير كلمة المرور",
   "you_must_change_something": "عفوًا! يجب عليك تغيير شيء",
@@ -184,6 +185,10 @@
   "video": "فديو",
   "fav_header": "قم بأختيار المواضيع التي تهمك",
   "fav_description": "حتى تظهر لك مقاطع الفيديو التي تناسب ذوقك",
-  "your_favourites_has_been_updated": "تم تحديث اهتمامتك بنجاح"
+  "your_favourites_has_been_updated": "تم تحديث اهتمامتك بنجاح",
+  "view": "مشاهدة",
+  "statistics_header": "ال 10 الأكثر ربحا هذا الشهر",
+  "excited_for_what_you_will_see_today": "متحمس للي راح تشوفه اليوم!"
+
 
 }

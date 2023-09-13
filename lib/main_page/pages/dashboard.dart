@@ -8,6 +8,7 @@ import '../../data/network/network_info.dart';
 import '../../features/home/page/home.dart';
 import '../../features/more/page/more.dart';
 import '../../features/profile/provider/profile_provider.dart';
+import '../../features/statistics/page/statistics.dart';
 import '../widget/nav_bar.dart';
 
 class DashBoard extends StatefulWidget {
@@ -30,9 +31,9 @@ class _DashBoardState extends State<DashBoard> {
   Widget fragment(int index) {
     switch (index) {
       case 0:
-        return Container();
+        return  const Home();
       case 1:
-        return Container();
+        return const Statistics();
       case 2:
         return const Profile();
       case 3:

@@ -4,6 +4,8 @@ class EndPoints {
   static const String imageUrl = 'https://gano.softwarecloud2.com/';
   static const String apiKey =
       's7xrpFdw4G0F21rfLyD4TaBkjVJYgwGfI3y458ejWjw9zOggruX30e1as2d3';
+
+  ///Authentication
   static const String topic = 'gano';
   static const String logIn = 'login';
   static const String register = 'client';
@@ -13,31 +15,27 @@ class EndPoints {
   static changePassword(id) => 'changePassword/$id';
   static const String resend = 'email/verification';
   static const String verifyEmail = 'check/verificationCode';
+
+  /// Profile and Favourites
   static getProfile(id) => 'client/$id';
-  static getStatistics(id) => 'statistics/$id';
   static updateProfile(id) => 'client/$id';
   static const String categories = 'category';
+  static updateFavourite(id) => 'add/categories/$id';
+  static getFavourites(id) => 'client/categories/$id';
+
+  ///Profile Statistics
+  static getStatistics(id) => 'statistics/$id';
+
+  ///Monthly Statistics
+  static const String monthlyStatistics = 'statistics';
+
+  ///Notifications
   static getNotifications(id) => 'notification/$id';
   static readNotification(userId, id) => 'notification/read/$userId/$id';
   static deleteNotification(userId, id) => 'notification/delete/$userId/$id';
-  static getAddresses(id) => 'address/$id';
-  static deleteAddress(id) => 'address/$id';
-  static String addAddress = 'address';
-  static cancelReservation(id) => 'reservation/$id';
-  static nextReservations(id) => 'next/reservation/$id';
   static previousReservations(id) => 'past/reservation/$id';
-  static updateFavourite(id) => 'add/categories/$id';
-  static getFavourites(id) => 'client/categories/$id';
-  static const String category = 'service';
-  static const products = 'subService';
-  static categoryProducts(id) => 'service/$id';
+
   static const String banners = 'banner';
-  static productDetails(id) => 'subService/$id';
-  static productSchedule(id) => 'subService/schedule/$id';
-  static daySchedule(id) => 'subService/daySchedule/$id';
-  static payment(id) => '/$id';
-  static const String ratting = 'feedback';
-  static const String checkOut = 'setting';
   static const String setting = 'setting';
   static contact(id) => 'contact/$id';
   static invitation(id) => 'contact/$id';
