@@ -13,7 +13,7 @@ import 'package:flutter/rendering.dart';
 
 class HomeProvider extends ChangeNotifier {
   HomeRepo homeRepo;
-  HomeProvider({required this.homeRepo}) ;
+  HomeProvider({required this.homeRepo});
 
   bool get isLogin => homeRepo.isLoggedIn();
 

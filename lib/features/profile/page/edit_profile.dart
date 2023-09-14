@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/components/animated_widget.dart';
 import 'package:gano/features/profile/widgets/profile_image_widget.dart';
 import 'package:provider/provider.dart';
@@ -19,16 +20,17 @@ class EditProfile extends StatelessWidget {
       ),
       body: SafeArea(
         child: Consumer<ProfileProvider>(builder: (_, provider, child) {
-          return const Column(
+          return Column(
             children: [
               Expanded(
                   child: ListAnimator(
                 data: [
-                  ProfileImageWidget(withEdit: true),
-                  SizedBox(
-                    height: 24,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                    child: const ProfileImageWidget(withEdit: true),
                   ),
-                  EditProfileBody(),
+                  const EditProfileBody(),
                 ],
               ))
             ],
