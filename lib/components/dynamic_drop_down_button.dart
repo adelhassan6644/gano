@@ -52,7 +52,7 @@ class _DynamicDropDownButtonState extends State<DynamicDropDownButton> {
           return DropdownMenuItem(
             value: item,
             child: Text(
-              item.name,
+              item.duration,
               style: AppTextStyles.medium
                   .copyWith(color: Styles.TITLE, fontSize: 13),
             ),

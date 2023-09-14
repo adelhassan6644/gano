@@ -2,6 +2,7 @@ import 'package:gano/app/core/utils/styles.dart';
 import 'package:gano/features/home/provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import '../../../data/config/di.dart';
+import '../widgets/home_ads.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_banners.dart';
 
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                       padding: EdgeInsets.zero,
                       children: const [
                         HomeBanner(),
-                        // HomeProducts(),
+                        HomeAds(),
                       ],
                     ),
                   ),

@@ -18,18 +18,6 @@ class HomeRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
-  Future<Either<ServerFailure, Response>> getHomeCategory() async {
-    try {
-      Response response = await dioClient.get(uri: "");
-      if (response.statusCode == 200) {
-        return Right(response);
-      } else {
-        return left(ServerFailure(response.data['message']));
-      }
-    } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-    }
-  }
 
   Future<Either<ServerFailure, Response>> getHomeBanner() async {
     try {
@@ -44,7 +32,7 @@ class HomeRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getHomeProducts(id) async {
+  Future<Either<ServerFailure, Response>> getHomeAds() async {
     try {
       Response response = await dioClient.get(
           uri: "");

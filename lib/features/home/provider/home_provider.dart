@@ -7,7 +7,7 @@ import 'package:gano/features/home/models/banner_model.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
-import '../../../main_models/item_model.dart';
+import '../models/ads_model.dart';
 import '../repo/home_repo.dart';
 import 'package:flutter/rendering.dart';
 
@@ -28,51 +28,6 @@ class HomeProvider extends ChangeNotifier {
         notifyListeners();
       }
     });
-  }
-
-  late int currentTab = 0;
-  void selectTab(v) {
-    currentTab = v;
-    getAds();
-    notifyListeners();
-  }
-
-  List<ItemModel>? categories;
-  bool isGetCategories = false;
-  getCategories() async {
-    try {
-      isGetCategories = true;
-      notifyListeners();
-      Either<ServerFailure, Response> response =
-          await homeRepo.getHomeCategory();
-      response.fold((fail) {
-        isGetCategories = false;
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: ApiErrorHandler.getMessage(fail),
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-        notifyListeners();
-      }, (success) {
-        if (success.data["data"] != null) {
-          categories = List<ItemModel>.from(
-              success.data["data"].map((x) => ItemModel.fromJson(x)));
-          categories!.insert(0, ItemModel(title: "الكل", id: 0));
-        }
-        isGetCategories = false;
-        notifyListeners();
-      });
-    } catch (e) {
-      isGetCategories = false;
-      CustomSnackBar.showSnackBar(
-          notification: AppNotification(
-              message: e.toString(),
-              isFloating: true,
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Colors.transparent));
-      notifyListeners();
-    }
   }
 
   CarouselController bannerController = CarouselController();
@@ -120,42 +75,31 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  List<ItemModel> products = [];
-  bool isGetProducts = false;
+  List<AdsModel>? ads;
+  bool isGetAds = false;
   getAds() async {
     try {
-      isGetProducts = true;
-      products = [];
+      isGetAds = true;
+      ads?.clear();
       notifyListeners();
-      Either<ServerFailure, Response> response =
-          await homeRepo.getHomeProducts(currentTab);
+      Either<ServerFailure, Response> response = await homeRepo.getHomeAds();
       response.fold((fail) {
-        isGetProducts = false;
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: ApiErrorHandler.getMessage(fail),
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-        notifyListeners();
       }, (success) {
-        if (currentTab == 0) {
-          if (success.data["data"] != null) {
-            products = List<ItemModel>.from(
-                success.data["data"].map((x) => ItemModel.fromJson(x)));
-          }
-        } else {
-          if (success.data["data"] != null &&
-              success.data["data"]["subServices"] != null) {
-            products = List<ItemModel>.from(success.data["data"]["subServices"]
-                .map((x) => ItemModel.fromJson(x)));
-          }
+        if (success.data["data"] != null) {
+          ads = List<AdsModel>.from(
+              success.data["data"].map((x) => AdsModel.fromJson(x)));
         }
-        isGetProducts = false;
-        notifyListeners();
       });
+      isGetAds = false;
+      notifyListeners();
     } catch (e) {
-      isGetProducts = false;
+      isGetAds = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),
