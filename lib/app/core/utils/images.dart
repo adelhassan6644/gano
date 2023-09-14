@@ -19,6 +19,7 @@ class Images {
   static const String contactMail = 'assets/images/contact_with_us.png';
   static const String invitation = 'assets/images/invitation.png';
   static const String termsFile = 'assets/images/terms_file.png';
+  static const String coin = 'assets/images/coin.png';
   static const String emptyReservations =
       'assets/images/empty_reservations.png';
   static const String coinsBg = 'assets/images/coins_bg.png';
