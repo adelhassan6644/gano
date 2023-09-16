@@ -59,7 +59,7 @@ class _NotificationCardState extends State<NotificationCard> {
               ),
             ),
             SizedBox(
-              width: 8.w,
+              width: 16.w,
             ),
             Expanded(
               child: Column(
@@ -69,26 +69,34 @@ class _NotificationCardState extends State<NotificationCard> {
                 children: [
                   Text(
                       widget.notification?.notificationBody?.title ??
-                          "jrbfefefjbjkg",
-                      maxLines: 3,
+                          "",
+                      maxLines: 1,
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.medium.copyWith(
                           fontSize: 16,
-                          color: widget.notification?.isRead == true
-                              ? Styles.DETAILS_COLOR
-                              : Styles.TITLE)),
-                  SizedBox(
-                    width: 8.w,
-                  ),
+                          color: Styles.TITLE)),
+                  SizedBox(height: 2.h,),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      Expanded(
+                        child: Text(
+                            widget.notification?.notificationBody?.message ??
+                                "",
+                            maxLines: 3,
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.medium.copyWith(
+                                fontSize: 16,
+                                color: Styles.SUBTITLE)),
+                      ),
+                      SizedBox(width: 8.w,),
                       Text(
                           widget.notification?.createdAt
-                                  ?.dateFormat(format: "EEE dd/mm") ??
-                              "efe",
+                                  ?.dateFormat(format: "dd/mm") ??
+                             DateTime.now().dateFormat(format: "dd/mm"),
                           style: AppTextStyles.regular.copyWith(
                               fontSize: 14, color: Styles.DETAILS_COLOR)),
                     ],
