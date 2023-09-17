@@ -17,12 +17,12 @@ class Terms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const CustomAppBar(
-            // title: getTranslated("terms_conditions", context),
-            ),
-        body: Column(
+    return Scaffold(
+      appBar: const CustomAppBar(
+          // title: getTranslated("terms_conditions", context),
+          ),
+      body: SafeArea(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Consumer<ConfigProvider>(builder: (_, provider, child) {

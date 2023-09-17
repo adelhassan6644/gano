@@ -22,7 +22,7 @@ class AuthProvider extends ChangeNotifier {
     required this.authRepo,
   }) {
     _mailTEC = TextEditingController(
-        text: kDebugMode ? "adel@gmail.com" : authRepo.getMail());
+        text: kDebugMode ? "adelhassan6644@gmail.com" : authRepo.getMail());
   }
 
   bool get isLogin => authRepo.isLoggedIn();
