@@ -36,7 +36,8 @@ class NotificationsRepo {
   Future<Either<ServerFailure, Response>> readNotification(id) async {
     try {
       Response response = await dioClient.post(
-          uri: EndPoints.readNotification(sharedPreferences.getString(AppStorageKey.userId),id));
+          uri: EndPoints.readNotification(
+              sharedPreferences.getString(AppStorageKey.userId), id));
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -50,7 +51,8 @@ class NotificationsRepo {
   Future<Either<ServerFailure, Response>> deleteNotification(id) async {
     try {
       Response response = await dioClient.post(
-          uri: EndPoints.deleteNotification(sharedPreferences.getString(AppStorageKey.userId),id));
+          uri: EndPoints.deleteNotification(
+              sharedPreferences.getString(AppStorageKey.userId), id));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

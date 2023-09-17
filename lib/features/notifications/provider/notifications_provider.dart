@@ -37,8 +37,7 @@ class NotificationsProvider extends ChangeNotifier {
     try {
       isLoading = true;
       notifyListeners();
-      Either<ServerFailure, Response> response =
-          await repo.getNotifications();
+      Either<ServerFailure, Response> response = await repo.getNotifications();
       response.fold((fail) {
         isLoading = false;
         CustomSnackBar.showSnackBar(
