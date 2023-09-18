@@ -14,6 +14,7 @@ import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app/core/utils/app_strings.dart';
+import 'firebase_options.dart';
 import 'navigation/custom_navigation.dart';
 import 'package:gano/data/config/di.dart' as di;
 import 'navigation/routes.dart';
@@ -22,8 +23,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   await Firebase.initializeApp(
-      // options: DefaultFirebaseOptions.currentPlatform,
-      );
+    // options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   FirebaseNotifications.init();
   await di.init();

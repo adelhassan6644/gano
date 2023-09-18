@@ -14,6 +14,7 @@ import '../features/favourites/page/favourites.dart';
 import '../features/on_boarding/pages/on_boarding.dart';
 import '../features/setting/pages/about_us.dart';
 import '../features/splash/page/splash.dart';
+import '../features/video_details/page/video_details.dart';
 import '../main.dart';
 import 'routes.dart';
 
@@ -62,7 +63,12 @@ abstract class CustomNavigator {
             Verification(fromRegister: settings.arguments as bool));
 
       case Routes.FAVOURITE:
-        return _pageRoute( Favourites(fromAuth: settings.arguments as bool,));
+        return _pageRoute(Favourites(
+          fromAuth: settings.arguments as bool,
+        ));
+
+      case Routes.VIDEO_DETAILS:
+        return _pageRoute(VideoDetails());
 
       case Routes.CONTACT_WITH_US:
         return _pageRoute(const ContactWithUs());

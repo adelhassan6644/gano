@@ -4,9 +4,28 @@ import 'package:provider/provider.dart';
 
 import '../../../navigation/custom_navigation.dart';
 import '../../localization/provider/localization_provider.dart';
+
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;
 }
+
+extension TimerFormatter on num {
+  String get toTimerFormatter {
+    print(this);
+    int h = (this ~/ 3600);
+    int m = ((toInt() - h * 3600)) ~/ 60;
+    int s = toInt() - (h * 3600) - (m * 60);
+    if (h == 0) h = 00;
+    if (m == 0) m = 00;
+    if (s == 0) s = 00;
+    if (h == 0) {
+      return "$m:${s.toString().padLeft(2, "0")}";
+    } else {
+      return "$h:${m.toString().padLeft(2, "0")}:${s.toString().padLeft(2, "0")}";
+    }
+  }
+}
+
 extension StringExtension on String {
   String capitalize() {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
@@ -37,6 +56,7 @@ extension StringExtension on String {
   String hiddenNumber() {
     return this[length - 2] + this[length - 1] + "*" * (length - 2);
   }
+
   String hiddenEmail() {
     return "${this[0]}${this[1]}${"*" * (length - 6)}.com";
   }
@@ -44,10 +64,7 @@ extension StringExtension on String {
 
 extension DateExtention on DateTime {
   String dateFormat({required String format, String? lang}) {
-    return DateFormat(
-      format,
-        lang
-    ).format(this);
+    return DateFormat(format, lang).format(this);
   }
 
   String arTimeFormat() {
