@@ -56,22 +56,22 @@ PODS:
   - Firebase/Messaging (10.12.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.12.0)
-  - firebase_analytics (10.4.4):
+  - firebase_analytics (10.4.5):
     - Firebase/Analytics (= 10.12.0)
     - firebase_core
     - Flutter
-  - firebase_auth (4.7.1):
+  - firebase_auth (4.9.0):
     - Firebase/Auth (= 10.12.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.15.0):
+  - firebase_core (2.15.1):
     - Firebase/CoreOnly (= 10.12.0)
     - Flutter
-  - firebase_dynamic_links (5.3.4):
+  - firebase_dynamic_links (5.3.5):
     - Firebase/DynamicLinks (= 10.12.0)
     - firebase_core
     - Flutter
-  - firebase_messaging (14.6.5):
+  - firebase_messaging (14.6.7):
     - Firebase/Messaging (= 10.12.0)
     - firebase_core
     - Flutter
@@ -144,9 +144,16 @@ PODS:
   - FMDB/standard (2.7.5)
   - geolocator_apple (1.2.0):
     - Flutter
+  - Google-Mobile-Ads-SDK (10.4.0):
+    - GoogleAppMeasurement (< 11.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
   - google_maps_flutter_ios (0.0.1):
     - Flutter
     - GoogleMaps (< 8.0)
+  - google_mobile_ads (1.0.0):
+    - Flutter
+    - Google-Mobile-Ads-SDK (~> 10.4.0)
+    - webview_flutter_wkwebview
   - GoogleAppMeasurement (10.12.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.12.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -176,6 +183,7 @@ PODS:
   - GoogleMaps/Base (7.4.0)
   - GoogleMaps/Maps (7.4.0):
     - GoogleMaps/Base
+  - GoogleUserMessagingPlatform (2.1.0)
   - GoogleUtilities/AppDelegateSwizzler (7.11.5):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -255,6 +263,7 @@ DEPENDENCIES:
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
+  - google_mobile_ads (from `.symlinks/plugins/google_mobile_ads/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - map_launcher (from `.symlinks/plugins/map_launcher/ios`)
@@ -282,9 +291,11 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseMessaging
     - FMDB
+    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleMaps
+    - GoogleUserMessagingPlatform
     - GoogleUtilities
     - GTMSessionFetcher
     - nanopb
@@ -330,6 +341,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/geolocator_apple/ios"
   google_maps_flutter_ios:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
+  google_mobile_ads:
+    :path: ".symlinks/plugins/google_mobile_ads/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   just_audio:
@@ -357,17 +370,17 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_settings: ee4ae4d1c9a907a23b81c40e5c56a5ca8a20a62b
-  audio_session: 8d5c1acf6b89d47b4091705a31a3d3e6b07368ad
+  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: ce3938a0df3cc1ef404671531facef740d03f920
   Firebase: 07150e75d142fb9399f6777fa56a187b17f833a0
-  firebase_analytics: 3ff822ee2e90f95b61f0da300df20b378d380fbb
-  firebase_auth: a57bf431e73283cbffaa562717256ec6bd2d8d4c
-  firebase_core: e477125798fc37cd4ab43ca6a8536bf7e0929c00
-  firebase_dynamic_links: d85cf455646322fd101c8a5a5942c3d47132fe80
-  firebase_messaging: 334d68c3a36b6d4d5cd91e4f42509e0d4ae49828
+  firebase_analytics: 3bdcd8b68b7b8ccf28bbcdcfb994309f6232f873
+  firebase_auth: 097a2440d40bed75f4dfe4cb91b4d98349509b47
+  firebase_core: 4a3246a02f828a01c74a2c26427037786d90f17f
+  firebase_dynamic_links: cc3fd36190c7b58c27353915271d2c0d031ee11b
+  firebase_messaging: 0b4f7997f491343b90d9300af54fe55c72135833
   FirebaseAnalytics: 0270389efbe3022b54ec4588862dabec3477ee98
   FirebaseAppCheckInterop: c87f1d5421c852413dd936b2b2340b21e62501a0
   FirebaseAuth: a66c1e14ec58f41d154a4b41ce1a23ea00ad4805
@@ -377,22 +390,25 @@ SPEC CHECKSUMS:
   FirebaseInstallations: f672b1eda64e6381c21d424a2f680a943fd83f3b
   FirebaseMessaging: bb2c4f6422a753038fe137d90ae7c1af57251316
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_inappwebview: 28a3ef797285120c77d2d20d96ef25e570d65feb
+  flutter_inappwebview: 50b55a88f5dddadc9e741a7caf72f378116e2156
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
-  flutter_native_splash: 2a3563596b10e25acec2593b2d0abbf870aa17b2
-  fluttertoast: f271c1f537237ebe56f1f9b2be91a08dbadd4304
+  flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
+  fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
+  Google-Mobile-Ads-SDK: 32fe7836431a06a29f7734ae092b600137c8108d
   google_maps_flutter_ios: abdac20d6ce8931f6ebc5f46616df241bfaa2cfd
+  google_mobile_ads: 53b1f0d74445963e5810e34ac38dfb27aabe278e
   GoogleAppMeasurement: 2d800fab85e7848b1e66a6f8ce5bca06c5aad892
   GoogleDataTransport: 54dee9d48d14580407f8f5fbf2f496e92437a2f2
   GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
+  GoogleUserMessagingPlatform: dce302b8f1b84d6e945812ee7a15c3f65a102cbf
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
-  just_audio: a1e911ea8deedc6f3eae60da1b4d18c5a0d488b7
-  map_launcher: f8edd18459096c1832d806d5c828d763afd16914
+  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  map_launcher: e325db1261d029ff33e08e03baccffe09593ffea
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   package_info_plus: fd030dabf36271f146f1f3beacd48f564b0f17f7
