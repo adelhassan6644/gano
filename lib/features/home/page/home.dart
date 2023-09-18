@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:gano/app/core/utils/styles.dart';
@@ -21,10 +19,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   ScrollController controller = ScrollController();
   static final AdRequest request = const AdRequest(
-    // keywords: <String>['foo', 'bar'],
-    // contentUrl: 'http://foo.com/bar.html',
-    // nonPersonalizedAds: true,
-  );
+      // keywords: <String>['foo', 'bar'],
+      // contentUrl: 'http://foo.com/bar.html',
+      // nonPersonalizedAds: true,
+      );
   RewardedAd? _rewardedAd;
   int _numRewardedLoadAttempts = 0;
 
@@ -38,6 +36,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
     });
     super.initState();
   }
+
   void _createRewardedAd() {
     RewardedAd.load(
         adUnitId: Platform.isAndroid
@@ -60,6 +59,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
           },
         ));
   }
+
   void _showRewardedAd() {
     if (_rewardedAd == null) {
       print('Warning: attempt to show rewarded before loaded.');
@@ -83,10 +83,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
     _rewardedAd!.setImmersiveMode(true);
     _rewardedAd!.show(
         onUserEarnedReward: (AdWithoutView ad, RewardItem reward) {
-          print('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
-        });
+      print('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
+    });
     _rewardedAd = null;
   }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
