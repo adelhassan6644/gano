@@ -21,7 +21,8 @@ class AdsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => CustomNavigator.push(Routes.VIDEO_DETAILS),
+      onTap: () =>
+          CustomNavigator.push(Routes.VIDEO_DETAILS, arguments: AdsModel()),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 6.h),
         height: 220.h,
@@ -38,7 +39,8 @@ class AdsCard extends StatelessWidget {
           ],
         ),
         child: InkWell(
-          onTap: () => CustomNavigator.push(Routes.VIDEO_DETAILS,),
+          onTap: () =>
+              CustomNavigator.push(Routes.VIDEO_DETAILS, arguments: AdsModel()),
           child: Stack(
             children: [
               CustomNetworkImage.containerNewWorkImage(

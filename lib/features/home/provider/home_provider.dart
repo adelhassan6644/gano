@@ -75,12 +75,12 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  List<AdsModel>? ads;
-  bool isGetAds = false;
+  List<AdsModel> ads = [];
+  bool isLoading = false;
   getAds() async {
     try {
-      isGetAds = true;
-      ads?.clear();
+      isLoading = true;
+      ads.clear();
       notifyListeners();
       Either<ServerFailure, Response> response = await homeRepo.getHomeAds();
       response.fold((fail) {
@@ -96,10 +96,10 @@ class HomeProvider extends ChangeNotifier {
               success.data["data"].map((x) => AdsModel.fromJson(x)));
         }
       });
-      isGetAds = false;
+      isLoading = false;
       notifyListeners();
     } catch (e) {
-      isGetAds = false;
+      isLoading = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),

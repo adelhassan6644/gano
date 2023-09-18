@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/components/custom_images.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
-                    onTap: () => CustomNavigator.pop(),
+                    onTap: () {
+                      SystemChrome.setPreferredOrientations([
+                        DeviceOrientation.portraitDown,
+                        DeviceOrientation.portraitUp,
+                      ]);
+                      CustomNavigator.pop();
+                    },
                     radius: 100,
                     child: customImageIconSVG(
                         imageName: SvgImages.arrowRight,

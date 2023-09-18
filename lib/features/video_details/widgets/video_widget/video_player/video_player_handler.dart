@@ -5,6 +5,7 @@ import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/app/core/utils/svg_images.dart';
 import 'package:video_player/video_player.dart';
+import 'dart:ui' as ui;
 
 import '../../../../../app/core/utils/styles.dart';
 import '../../../../../components/custom_app_bar.dart';
@@ -57,12 +58,34 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
                 height:
                     MediaQuery.of(context).orientation == Orientation.portrait
                         ? widget.height
-                        : context.height - 24,
+                        : context.height,
                 child: AspectRatio(
                   aspectRatio: _controller.value.aspectRatio,
                   child: VideoPlayer(_controller),
                 ),
               ),
+              // ClipRRect(
+              //   clipBehavior: Clip.antiAlias,
+              //   borderRadius: BorderRadius.circular(0),
+              //   child: BackdropFilter(
+              //     filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              //     child: Container(
+              //         width: widget.width ?? context.width,
+              //         height:
+              //         MediaQuery.of(context).orientation == Orientation.portrait
+              //             ? widget.height
+              //             : context.height,
+              //       padding: EdgeInsets.symmetric(
+              //           horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+              //       decoration: BoxDecoration(
+              //           color: Colors.black.withOpacity(0.3),
+              //           borderRadius: BorderRadius.circular(0)),
+              //       child:const Center(
+              //           child:
+              //           CircularProgressIndicator(color: Styles.PRIMARY_COLOR))
+              //     ),
+              //   ),
+              // )
               // video buttons
               Stack(
                 children: [
@@ -71,7 +94,7 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
                     height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
                         ? widget.height
-                        : context.height - 24,
+                        : context.height,
                     child: AspectRatio(
                       aspectRatio: _controller.value.aspectRatio,
                       child: GestureDetector(
@@ -147,12 +170,14 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
                       ),
                     ),
                   ),
+
                   // video app bar
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                     child: const CustomAppBar(),
                   ),
+
                   // video progress
                   Positioned(
                     bottom: 0,
@@ -170,19 +195,31 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
                         duration: _controller.value.duration.inSeconds,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
           )
-        : Container(
-            width: widget.width ?? context.width,
-            height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? widget.height
-                : context.height,
-            color: Colors.black,
-            child: const Center(
-                child: CircularProgressIndicator(color: Styles.PRIMARY_COLOR)),
+        : Stack(
+            children: [
+              Container(
+                width: widget.width ?? context.width,
+                height:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? widget.height
+                        : context.height,
+                color: Colors.black,
+                child: const Center(
+                    child:
+                        CircularProgressIndicator(color: Styles.PRIMARY_COLOR)),
+              ),
+              // video app bar
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                child: const CustomAppBar(),
+              ),
+            ],
           );
   }
 

@@ -11,7 +11,6 @@ int getHashCode(DateTime key) {
 
 extension TimerFormatter on num {
   String get toTimerFormatter {
-    print(this);
     int h = (this ~/ 3600);
     int m = ((toInt() - h * 3600)) ~/ 60;
     int s = toInt() - (h * 3600) - (m * 60);
@@ -19,9 +18,9 @@ extension TimerFormatter on num {
     if (m == 0) m = 00;
     if (s == 0) s = 00;
     if (h == 0) {
-      return "$m:${s.toString().padLeft(2, "0")}";
+      return "$m:${s.toString().padLeft(2, "0")} m";
     } else {
-      return "$h:${m.toString().padLeft(2, "0")}:${s.toString().padLeft(2, "0")}";
+      return "$h:${m.toString().padLeft(2, "0")}:${s.toString().padLeft(2, "0")} h";
     }
   }
 }

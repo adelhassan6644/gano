@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:video_player/video_player.dart';
-
-import 'animated_info.dart';
 import 'video_progress_bar.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
@@ -42,7 +40,6 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
   _getVideo() async {
     _videoPlayerController = VideoPlayerController.network(widget.link ??
             "https://engineering-tracks.com/webroot/eLearning/Courses/CMRP31/CMRP3101-Part2.mp4"
-        // "https://curl.engineering-tracks.com/run_vimeo_iframe_new.php?lesson_id=9448&t=2"
         )
       // ..addListener(
       //   () {
@@ -66,7 +63,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
     });
     // _videoPlayerController.seekTo(Duration(minutes: 2));
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _animation = Tween(begin: -1.0, end: 0.0).animate(
         CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack));
     _controller.forward();
@@ -95,10 +92,11 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
   }
 
   refresh() {
-    if (_opacity == 1.0)
+    if (_opacity == 1.0) {
       setState(() => _opacity = 0.0);
-    else
+    } else {
       setState(() => _opacity = 1.0);
+    }
   }
 
   @override
@@ -118,19 +116,11 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
                   onTap: () {
                     refresh();
                   },
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: AspectRatio(
-                          aspectRatio: _videoPlayerController.value.aspectRatio,
-                          child: VideoPlayer(_videoPlayerController),
-                        ),
-                      ),
-                      AnimatedInfo(
-                        controller: _controller,
-                        animation: _animation,
-                      ),
-                    ],
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: _videoPlayerController.value.aspectRatio,
+                      child: VideoPlayer(_videoPlayerController),
+                    ),
                   ),
                 )
               : const Center(child: CircularProgressIndicator()),

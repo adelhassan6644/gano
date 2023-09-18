@@ -1,6 +1,8 @@
 class AdsModel {
   int? id;
   String? category;
+  String? description;
+  String? videoLink;
   String? duration;
   String? coins;
   String? image;
@@ -8,7 +10,9 @@ class AdsModel {
   AdsModel({
     this.id,
     this.category,
+    this.videoLink,
     this.duration,
+    this.description,
     this.coins,
     this.image,
   });
@@ -16,8 +20,10 @@ class AdsModel {
   AdsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     category = json['category'];
-    duration = json['duration'].toString();
+    videoLink = json['videoLink'].toString();
+    description = json['description'].toString();
     coins = json['coins'].toString();
+    duration = json['duration'].toString();
     image = json['image'];
   }
 
@@ -25,6 +31,8 @@ class AdsModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['category'] = category;
+    data['description'] = description;
+    data['videoLink'] = videoLink;
     data['duration'] = duration;
     data['coins'] = coins;
     data['image'] = image;
