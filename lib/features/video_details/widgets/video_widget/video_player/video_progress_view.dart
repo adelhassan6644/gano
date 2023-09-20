@@ -47,6 +47,7 @@ class VideoProgress extends StatelessWidget {
                   inactiveColor: Styles.WHITE_COLOR,
                   secondaryActiveColor: Styles.WHITE_COLOR,
                   onChanged: onChanged,
+
                   max: duration.toDouble(),
                 ),
               ),

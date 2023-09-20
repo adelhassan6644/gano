@@ -82,8 +82,8 @@ class SvgImages {
   static const String openButton = 'assets/svgs/open_button.svg';
   static const String moreSquareIcon = 'assets/svgs/more_square.svg';
   static const String earnings = 'assets/svgs/earnings.svg';
-  static const String forward10Seconds = 'assets/svgs/forward-10-seconds.svg';
-  static const String backward10Seconds = 'assets/svgs/backward-10-seconds.svg';
+  static const String forward10Seconds = 'assets/svgs/backward-10-seconds.svg';
+  static const String backward10Seconds = 'assets/svgs/forward-10-seconds.svg';
   static const String play_1 = 'assets/svgs/play_1.svg';
   static const String pause_1 = 'assets/svgs/pause_1.svg';
   static const String pause = 'assets/svgs/pause.svg';

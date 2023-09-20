@@ -25,7 +25,7 @@ class VideoDetails extends StatelessWidget {
             ///Video
             VideoPlayerView(
                 id: videoModel.id ?? 1,
-                path:
+                path: videoModel.videoPath ??
                     "https://engineering-tracks.com/webroot/eLearning/Courses/CMRP31/CMRP3101-Part2.mp4",
                 type: VideoType.network,
                 height: context.height * 0.4,

@@ -179,9 +179,9 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
                       visible: showButtons,
                       child: VideoProgress(
                         onChanged: (value) async {
-                          _controller
-                              .seekTo(Duration(seconds: value.toInt()))
-                              .then((value) => setState(() {}));
+                          // _controller
+                          //     .seekTo(Duration(seconds: value.toInt()))
+                          //     .then((value) => setState(() {}));
                         },
                         currentValue: _controller.value.position.inSeconds,
                         duration: _controller.value.duration.inSeconds,
