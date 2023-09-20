@@ -2,57 +2,79 @@ import 'package:flutter/material.dart';
 import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/app/localization/localization/language_constant.dart';
-import 'package:gano/features/home/models/ads_model.dart';
+import 'package:gano/main_models/video_model.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
-import '../widgets/related_ads.dart';
+import '../widgets/related_videos.dart';
 import '../widgets/video_widget/video_player/video_player_handler.dart';
 
 class VideoDetails extends StatelessWidget {
-  const VideoDetails({Key? key, required this.adModel}) : super(key: key);
-  final AdsModel adModel;
+  const VideoDetails({Key? key, required this.videoModel}) : super(key: key);
+  final VideoModel videoModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          ///Video
-          VideoPlayerView(
-              path: adModel.videoLink ??
-                  "https://engineering-tracks.com/webroot/eLearning/Courses/CMRP31/CMRP3101-Part2.mp4",
-              type: VideoType.network,
-              height: context.height * 0.4,
-              width: context.width),
+      body: SafeArea(
+        top: false,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ///Video
+            VideoPlayerView(
+                path: videoModel.videoPath ??
+                    "https://engineering-tracks.com/webroot/eLearning/Courses/CMRP31/CMRP3101-Part2.mp4",
+                type: VideoType.network,
+                height: context.height * 0.4,
+                width: context.width),
 
-          ///Video Description
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-            child: ReadMoreText(
-              adModel.description ?? "",
-              trimLines: 3,
-              colorClickableText: Styles.PRIMARY_COLOR,
-              trimMode: TrimMode.Line,
-              trimCollapsedText: " ${getTranslated("read_more", context)}",
-              trimExpandedText: " ${getTranslated("read_less", context)}",
-              style: AppTextStyles.medium
-                  .copyWith(fontSize: 16, color: Styles.SUBTITLE),
-              moreStyle: AppTextStyles.medium
-                  .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
-              lessStyle: AppTextStyles.medium
-                  .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                  Dimensions.PADDING_SIZE_DEFAULT.w,
+                  Dimensions.PADDING_SIZE_DEFAULT.h,
+                  Dimensions.PADDING_SIZE_DEFAULT.w,
+                  4.h),
+              child: Text(
+                videoModel.title ?? "",
+                style: AppTextStyles.semiBold.copyWith(
+                    color: Styles.TITLE,
+                    fontSize: 16,
+                    overflow: TextOverflow.ellipsis),
+              ),
             ),
-          ),
 
-          ///Video Related Videos
-          RelatedAds(
-            id: adModel.id ?? 0,
-          ),
-        ],
+            ///Video Description
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                Dimensions.PADDING_SIZE_DEFAULT.w,
+                0,
+                Dimensions.PADDING_SIZE_DEFAULT.w,
+                Dimensions.PADDING_SIZE_DEFAULT.h,
+              ),
+              child: ReadMoreText(
+                videoModel.description ?? "",
+                trimLines: 3,
+                colorClickableText: Styles.PRIMARY_COLOR,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: " ${getTranslated("read_more", context)}",
+                trimExpandedText: " ${getTranslated("read_less", context)}",
+                style: AppTextStyles.medium
+                    .copyWith(fontSize: 16, color: Styles.SUBTITLE),
+                moreStyle: AppTextStyles.medium
+                    .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                lessStyle: AppTextStyles.medium
+                    .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+              ),
+            ),
+
+            ///Video Related Videos
+            RelatedVideos(
+              id: videoModel.id ?? 0,
+            ),
+          ],
+        ),
       ),
     );
   }

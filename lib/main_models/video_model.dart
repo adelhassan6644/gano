@@ -1,39 +1,43 @@
-class AdsModel {
+class VideoModel {
   int? id;
   String? category;
   String? description;
-  String? videoLink;
+  String? title;
+  String? videoPath;
   String? duration;
   String? coins;
   String? image;
 
-  AdsModel({
+  VideoModel({
     this.id,
     this.category,
-    this.videoLink,
+    this.title,
+    this.videoPath,
     this.duration,
     this.description,
     this.coins,
     this.image,
   });
 
-  AdsModel.fromJson(Map<String, dynamic> json) {
+  VideoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    category = json['category'];
-    videoLink = json['videoLink'].toString();
-    description = json['description'].toString();
-    coins = json['coins'].toString();
-    duration = json['duration'].toString();
     image = json['image'];
+    title = json['title'];
+    videoPath = json['video_path'];
+    duration = json['duration'].toString();
+    coins = json['coins'].toString();
+    category = json['category'];
+    description = json['description'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['category'] = category;
+    data['title'] = title;
     data['description'] = description;
-    data['videoLink'] = videoLink;
-    data['duration'] = duration;
+    data['videoLink'] = videoPath;
+    data['duration'] = duration.toString();
     data['coins'] = coins;
     data['image'] = image;
     return data;

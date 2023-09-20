@@ -30,14 +30,12 @@ class StatisticsProvider extends ChangeNotifier {
   bool get isLogin => repo.isLoggedIn();
   bool isMe(id) => repo.isMe(id);
 
-  List<StatisticsModel>? nextReservations;
-
-  List<StatisticsModel>? statistics;
+  List<StatisticsModel> statistics = [];
   bool isLoading = false;
   getMonthlyStatistics() async {
     try {
       isLoading = true;
-      statistics?.clear();
+      statistics.clear();
       notifyListeners();
 
       Either<ServerFailure, Response> response =

@@ -5,7 +5,6 @@ import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/app/core/utils/svg_images.dart';
 import 'package:video_player/video_player.dart';
-import 'dart:ui' as ui;
 
 import '../../../../../app/core/utils/styles.dart';
 import '../../../../../components/custom_app_bar.dart';
@@ -25,12 +24,13 @@ class VideoPlayerView extends StatefulWidget {
 class _VideoPlayerViewState extends State<VideoPlayerView> {
   late VideoPlayerController _controller;
 
-  void _initVideo() {
+  _initVideo() {
     switch (widget.type) {
       case VideoType.network:
-        _controller = VideoPlayerController.network(widget.path!)
-          ..setLooping(true)
-          ..initialize().then((value) => setState(() {}));
+        _controller =
+            VideoPlayerController.networkUrl(Uri.parse(widget.path ?? ""))
+              ..setLooping(true)
+              ..initialize().then((value) => setState(() {}));
         break;
       case VideoType.asset:
         _controller = VideoPlayerController.asset(widget.path!)
@@ -43,6 +43,12 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
       default:
     }
     _controller.addListener(() => setState(() {}));
+  }
+
+  @override
+  void initState() {
+    _initVideo();
+    super.initState();
   }
 
   bool showButtons = true;
@@ -226,12 +232,6 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
   //=====================================================
   //=====================================================
   //=====================================================
-
-  @override
-  void initState() {
-    _initVideo();
-    super.initState();
-  }
 
   @override
   void dispose() {

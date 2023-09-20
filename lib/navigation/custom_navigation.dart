@@ -11,7 +11,7 @@ import '../features/auth/pages/register.dart';
 import '../features/auth/pages/verification.dart';
 import '../features/contact_with_us/page/contact_with_us.dart';
 import '../features/favourites/page/favourites.dart';
-import '../features/home/models/ads_model.dart';
+import '../main_models/video_model.dart';
 import '../features/on_boarding/pages/on_boarding.dart';
 import '../features/setting/pages/about_us.dart';
 import '../features/splash/page/splash.dart';
@@ -70,7 +70,7 @@ abstract class CustomNavigator {
 
       case Routes.VIDEO_DETAILS:
         return _pageRoute(VideoDetails(
-          adModel: settings.arguments as AdsModel,
+          videoModel: settings.arguments as VideoModel,
         ));
 
       case Routes.CONTACT_WITH_US:

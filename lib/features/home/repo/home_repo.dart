@@ -18,7 +18,6 @@ class HomeRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
-
   Future<Either<ServerFailure, Response>> getHomeBanner() async {
     try {
       Response response = await dioClient.get(uri: EndPoints.banners);
@@ -32,10 +31,9 @@ class HomeRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getHomeAds() async {
+  Future<Either<ServerFailure, Response>> getHomeVideos() async {
     try {
-      Response response = await dioClient.get(
-          uri: "");
+      Response response = await dioClient.get(uri: EndPoints.videos);
       if (response.statusCode == 200) {
         return Right(response);
       } else {

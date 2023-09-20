@@ -64,7 +64,7 @@ Future<void> init() async {
       () => InvitationRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
-      () => RelatedAdsRepo(sharedPreferences: sl(), dioClient: sl()));
+      () => RelatedVideoRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
   sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));

@@ -5,7 +5,7 @@ import 'package:gano/features/home/provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../data/config/di.dart';
-import '../widgets/home_ads.dart';
+import '../widgets/home_videos.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_banners.dart';
 
@@ -100,25 +100,21 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
           Expanded(
             child: RefreshIndicator(
               color: Styles.PRIMARY_COLOR,
+              triggerMode: RefreshIndicatorTriggerMode.anywhere,
               onRefresh: () async {
-                // sl<HomeProvider>().getBanners();
+                sl<HomeProvider>().getBanners();
+                sl<HomeProvider>().getHomeVideos();
+
                 _createRewardedAd();
                 _showRewardedAd();
-                // sl<HomeProvider>().getAds();
               },
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView(
-                      controller: controller,
-                      physics: const BouncingScrollPhysics(),
-                      padding: EdgeInsets.zero,
-                      children: const [
-                        HomeBanner(),
-                        HomeAds(),
-                      ],
-                    ),
-                  ),
+              child: ListView(
+                controller: controller,
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                children: const [
+                  HomeBanner(),
+                  HomeVideos(),
                 ],
               ),
             ),

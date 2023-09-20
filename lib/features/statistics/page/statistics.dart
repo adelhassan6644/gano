@@ -30,8 +30,8 @@ class _StatisticsState extends State<Statistics>
     super.build(context);
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+        padding:
+            EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
         child: const Stack(
           children: [StatisticsHeader(), StatisticsBody()],
         ),

@@ -27,7 +27,7 @@ class EndPoints {
   static getStatistics(id) => 'statistics/$id';
 
   ///Monthly Statistics
-  static const String monthlyStatistics = 'statistics';
+  static monthlyStatistics(id) => 'top/clients/views/$id';
 
   ///Notifications
   static getNotifications(id) => 'notification/$id';
@@ -36,6 +36,8 @@ class EndPoints {
   static previousReservations(id) => 'past/reservation/$id';
 
   static const String banners = 'banner';
+  static const String videos = 'video';
+  static relatedVideos(id) => 'related/videos/$id';
   static const String setting = 'setting';
   static contact(id) => 'contact/$id';
   static invitation(id) => 'contact/$id';

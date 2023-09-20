@@ -3,11 +3,11 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:gano/data/error/api_error_handler.dart';
-import 'package:gano/features/home/models/banner_model.dart';
+import 'package:gano/features/home/model/banner_model.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
-import '../models/ads_model.dart';
+import '../../../main_models/video_model.dart';
 import '../repo/home_repo.dart';
 import 'package:flutter/rendering.dart';
 
@@ -75,14 +75,14 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  List<AdsModel> ads = [];
+  List<VideoModel> videos = [];
   bool isLoading = false;
-  getAds() async {
+  getHomeVideos() async {
     try {
       isLoading = true;
-      ads.clear();
+      videos.clear();
       notifyListeners();
-      Either<ServerFailure, Response> response = await homeRepo.getHomeAds();
+      Either<ServerFailure, Response> response = await homeRepo.getHomeVideos();
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -92,8 +92,8 @@ class HomeProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (success.data["data"] != null) {
-          ads = List<AdsModel>.from(
-              success.data["data"].map((x) => AdsModel.fromJson(x)));
+          videos = List<VideoModel>.from(
+              success.data["data"].map((x) => VideoModel.fromJson(x)));
         }
       });
       isLoading = false;
