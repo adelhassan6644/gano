@@ -38,48 +38,48 @@ class Invitation extends StatelessWidget {
               Text(
                 getTranslated("invitation_header", context),
                 textAlign: TextAlign.center,
-                style: AppTextStyles.medium
-                    .copyWith(fontSize: 16, color: Styles.TITLE),
+                style: AppTextStyles.semiBold
+                    .copyWith(fontSize: 18, color: Styles.TITLE),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 6.h),
+                padding: EdgeInsets.symmetric(vertical: 14.h),
                 child: Text(
                   getTranslated("invitation_description", context),
                   textAlign: TextAlign.center,
                   style: AppTextStyles.regular
-                      .copyWith(fontSize: 14, color: Styles.SUBTITLE),
+                      .copyWith(fontSize: 18, color: Styles.SUBTITLE),
                 ),
               ),
-              CustomTextFormField(
-                controller: provider.mailTEC,
-                hint: getTranslated("mail", context),
-                inputType: TextInputType.emailAddress,
-                valid: Validations.mail,
-                pSvgIcon: SvgImages.mailIcon,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 12.h,
-                ),
-                child: CustomButton(
-                    text: getTranslated("send_invitation", context),
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        provider.sendInvitation();
-                      }
-                    },
-                    isLoading: provider.isLoading),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    getTranslated("or_send_it_via", context),
-                    style: AppTextStyles.medium
-                        .copyWith(fontSize: 14, color: Styles.SUBTITLE),
-                  ),
-                ],
-              ),
+              // CustomTextFormField(
+              //   controller: provider.mailTEC,
+              //   hint: getTranslated("mail", context),
+              //   inputType: TextInputType.emailAddress,
+              //   valid: Validations.mail,
+              //   pSvgIcon: SvgImages.mailIcon,
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //     vertical: 12.h,
+              //   ),
+              //   child: CustomButton(
+              //       text: getTranslated("send_invitation", context),
+              //       onTap: () {
+              //         if (formKey.currentState!.validate()) {
+              //           provider.sendInvitation();
+              //         }
+              //       },
+              //       isLoading: provider.isLoading),
+              // ),
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Text(
+              //       getTranslated("or_send_it_via", context),
+              //       style: AppTextStyles.medium
+              //           .copyWith(fontSize: 14, color: Styles.SUBTITLE),
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: 12.h,
               ),
@@ -90,24 +90,24 @@ class Invitation extends StatelessWidget {
                 children: [
                   customImageIconSVG(
                       imageName: SvgImages.faceBook,
-                      height: 40,
-                      width: 40,
-                      onTap: provider.launch),
+                      height: 45,
+                      width: 45,
+                      onTap: () => provider.launch(LaunchType.facebook)),
                   customImageIconSVG(
                       imageName: SvgImages.twitter,
-                      height: 40,
-                      width: 40,
-                      onTap: provider.launch),
+                      height: 45,
+                      width: 45,
+                      onTap: () => provider.launch(LaunchType.twitter)),
                   customImageIconSVG(
                       imageName: SvgImages.whatsApp,
-                      height: 40,
-                      width: 40,
-                      onTap: provider.launch),
+                      height: 45,
+                      width: 45,
+                      onTap: () => provider.launch(LaunchType.whatsapp)),
                   customImageIconSVG(
                       imageName: SvgImages.instagram,
-                      height: 40,
-                      width: 40,
-                      onTap: provider.launch),
+                      height: 45,
+                      width: 45,
+                      onTap: () => provider.launch(LaunchType.instagram)),
                 ],
               )
             ],

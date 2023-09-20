@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:gano/app/localization/localization/language_constant.dart';
 import 'package:gano/navigation/custom_navigation.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../components/confirmation_dialog.dart';
 import '../../../components/custom_simple_dialog.dart';
@@ -49,5 +52,36 @@ class InvitationProvider extends ChangeNotifier {
     }
   }
 
-  launch() {}
+  launchTwitter() {
+    try {
+      launchUrl(Uri.parse(
+        'https://www.twitter.com/Software_Cloud2',
+      ));
+    } catch (e) {
+      log("=====> Exception Twitter Launch $e");
+    }
+  }
+
+  launch(type) {
+    switch (type) {
+      case LaunchType.facebook:
+        {
+          return;
+        }
+      case LaunchType.twitter:
+        {
+          return launchTwitter();
+        }
+      case LaunchType.instagram:
+        {
+          return;
+        }
+      case LaunchType.whatsapp:
+        {
+          return;
+        }
+    }
+  }
 }
+
+enum LaunchType { facebook, twitter, instagram, whatsapp }
