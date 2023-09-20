@@ -19,12 +19,12 @@ class ContactWithUs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(
-          title: getTranslated("text_us", context),
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: getTranslated("text_us", context),
+      ),
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(child:
                 Consumer<ContactWithUsProvider>(builder: (_, provider, child) {
