@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gano/features/video_details/repo/related_ads_repo.dart';
+import 'package:gano/features/video_details/repo/video_details_repo.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/utils/dimensions.dart';
@@ -11,11 +11,10 @@ import '../../../components/empty_widget.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 import '../../../data/config/di.dart';
 import '../../home/widgets/video_card.dart';
-import '../provider/related_ads_provider.dart';
+import '../provider/related_videos_provider.dart';
 
 class RelatedVideos extends StatelessWidget {
   const RelatedVideos({Key? key, required this.id}) : super(key: key);
-
   final int id;
 
   @override
@@ -49,7 +48,7 @@ class RelatedVideos extends StatelessWidget {
               Expanded(
                 child: ChangeNotifierProvider(
                   create: (context) =>
-                      RelatedVideosProvider(repo: sl<RelatedVideoRepo>())
+                      RelatedVideosProvider(repo: sl<VideoDetailsRepo>())
                         ..getVideos(id),
                   child: Consumer<RelatedVideosProvider>(
                       builder: (_, provider, child) {

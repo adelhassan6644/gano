@@ -8,10 +8,10 @@ import '../../../data/error/failures.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../main_models/video_model.dart';
-import '../repo/related_ads_repo.dart';
+import '../repo/video_details_repo.dart';
 
 class RelatedVideosProvider extends ChangeNotifier {
-  RelatedVideoRepo repo;
+  VideoDetailsRepo repo;
   RelatedVideosProvider({required this.repo});
 
   bool get isLogin => repo.isLoggedIn();
@@ -50,6 +50,31 @@ class RelatedVideosProvider extends ChangeNotifier {
       }
     });
     isLoading = false;
+    notifyListeners();
+  }
+
+  bool isViewed = false;
+  viewVideo({id, time}) async {
+    isViewed = true;
+    notifyListeners();
+    Either<ServerFailure, Response> response =
+        await repo.viewVideo(id: id, time: time);
+    response.fold((fail) {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: ApiErrorHandler.getMessage(fail),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+    }, (success) {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: success.data["message"],
+              isFloating: true,
+              backgroundColor: Styles.ACTIVE,
+              borderColor: Colors.transparent));
+    });
+    isViewed = false;
     notifyListeners();
   }
 }

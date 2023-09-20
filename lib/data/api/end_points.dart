@@ -38,6 +38,7 @@ class EndPoints {
   static const String banners = 'banner';
   static const String videos = 'video';
   static relatedVideos(id) => 'related/videos/$id';
+  static const String viewVideo = 'view/video';
   static const String setting = 'setting';
   static contact(id) => 'contact/$id';
   static invitation(id) => 'contact/$id';

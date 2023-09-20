@@ -15,7 +15,7 @@ class StatisticsModel {
     id = json['id'];
     name = json['name'];
     image = json['image'];
-    views = json['views'];
+    views = json['view_count'];
   }
 
   Map<String, dynamic> toJson() {
@@ -23,7 +23,7 @@ class StatisticsModel {
     data['id'] = id;
     data['name'] = name;
     data['image'] = image;
-    data['views'] = views;
+    data['view_count'] = views;
     return data;
   }
 }

@@ -24,7 +24,8 @@ class VideoDetails extends StatelessWidget {
           children: [
             ///Video
             VideoPlayerView(
-                path: videoModel.videoPath ??
+                id: videoModel.id ?? 1,
+                path:
                     "https://engineering-tracks.com/webroot/eLearning/Courses/CMRP31/CMRP3101-Part2.mp4",
                 type: VideoType.network,
                 height: context.height * 0.4,
@@ -70,9 +71,7 @@ class VideoDetails extends StatelessWidget {
             ),
 
             ///Video Related Videos
-            RelatedVideos(
-              id: videoModel.id ?? 0,
-            ),
+            RelatedVideos(id: videoModel.id ?? 0),
           ],
         ),
       ),

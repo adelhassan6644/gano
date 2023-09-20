@@ -2,24 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/components/shimmer/custom_shimmer.dart';
+import 'package:gano/features/statistics/model/statistics_model.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/custom_network_image.dart';
 
 class WinnerWidget extends StatelessWidget {
-  const WinnerWidget(
-      {super.key,
-      required this.height,
-      required this.isLoading,
-      required this.index,
-      this.image,
-      this.name,
-      this.views});
+  const WinnerWidget({
+    super.key,
+    required this.height,
+    required this.isLoading,
+    required this.index,
+    this.statisticsModel,
+  });
   final double height;
   final bool isLoading;
   final int index;
-  final String? image, name, views;
+  final StatisticsModel? statisticsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,9 @@ class WinnerWidget extends StatelessWidget {
                     diameter: 60,
                   )
                 : CustomNetworkImage.circleNewWorkImage(
-                    image: image, color: Styles.WHITE_COLOR, radius: 30),
+                    image: statisticsModel?.image ?? "",
+                    color: Styles.WHITE_COLOR,
+                    radius: 30),
           ],
         ),
         Padding(
@@ -61,7 +63,7 @@ class WinnerWidget extends StatelessWidget {
               ? const CustomShimmerText(
                   width: 70,
                 )
-              : Text("$name",
+              : Text(statisticsModel?.name ?? "",
                   style: AppTextStyles.semiBold
                       .copyWith(fontSize: 14, color: Styles.SUBTITLE)),
         ),
@@ -69,7 +71,8 @@ class WinnerWidget extends StatelessWidget {
             ? const CustomShimmerText(
                 width: 70,
               )
-            : Text("${views ?? ""} ${getTranslated("view", context)}",
+            : Text(
+                "${statisticsModel?.views ?? ""} ${getTranslated("view", context)}",
                 style: AppTextStyles.medium
                     .copyWith(fontSize: 12, color: Styles.DETAILS_COLOR)),
         SizedBox(

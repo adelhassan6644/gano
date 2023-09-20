@@ -9,14 +9,23 @@ import 'package:video_player/video_player.dart';
 import '../../../../../app/core/utils/styles.dart';
 import '../../../../../components/custom_app_bar.dart';
 import '../../../../../components/custom_images.dart';
+import '../../../../../data/config/di.dart';
+import '../../../provider/view_video_provider.dart';
 import 'video_progress_view.dart';
 
 class VideoPlayerView extends StatefulWidget {
-  const VideoPlayerView(
-      {super.key, required this.type, this.path, this.width, this.height});
+  const VideoPlayerView({
+    super.key,
+    required this.id,
+    required this.type,
+    this.path,
+    this.width,
+    this.height,
+  });
   final VideoType type;
   final String? path;
   final double? width, height;
+  final int id;
   @override
   State<VideoPlayerView> createState() => _VideoPlayerViewState();
 }
@@ -70,29 +79,6 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
                   child: VideoPlayer(_controller),
                 ),
               ),
-              // ClipRRect(
-              //   clipBehavior: Clip.antiAlias,
-              //   borderRadius: BorderRadius.circular(0),
-              //   child: BackdropFilter(
-              //     filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-              //     child: Container(
-              //         width: widget.width ?? context.width,
-              //         height:
-              //         MediaQuery.of(context).orientation == Orientation.portrait
-              //             ? widget.height
-              //             : context.height,
-              //       padding: EdgeInsets.symmetric(
-              //           horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-              //       decoration: BoxDecoration(
-              //           color: Colors.black.withOpacity(0.3),
-              //           borderRadius: BorderRadius.circular(0)),
-              //       child:const Center(
-              //           child:
-              //           CircularProgressIndicator(color: Styles.PRIMARY_COLOR))
-              //     ),
-              //   ),
-              // )
-              // video buttons
               Stack(
                 children: [
                   SizedBox(
@@ -234,9 +220,11 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
   //=====================================================
 
   @override
-  void dispose() {
+  Future<void> dispose() async {
     if (_controller.value.isInitialized) {
+      int time = _controller.value.position.inSeconds;
       _controller.dispose();
+      sl<ViewVideoProvider>().viewVideo(id: widget.id, time: time);
     }
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values); // to re-show bars

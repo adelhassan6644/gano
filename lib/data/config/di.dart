@@ -18,7 +18,8 @@ import '../../features/setting/provider/config_provider.dart';
 import '../../features/setting/repo/config_repo.dart';
 import '../../features/statistics/provider/statistics_provider.dart';
 import '../../features/statistics/repo/statistics_repo.dart';
-import '../../features/video_details/repo/related_ads_repo.dart';
+import '../../features/video_details/provider/view_video_provider.dart';
+import '../../features/video_details/repo/video_details_repo.dart';
 import '../../main_page/provider/main_page_provider.dart';
 import '../api/end_points.dart';
 import '../network/network_info.dart';
@@ -64,7 +65,7 @@ Future<void> init() async {
       () => InvitationRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
-      () => RelatedVideoRepo(sharedPreferences: sl(), dioClient: sl()));
+      () => VideoDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
   sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));
@@ -76,6 +77,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => HomeProvider(homeRepo: sl()));
   sl.registerLazySingleton(() => StatisticsProvider(repo: sl()));
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));
+  sl.registerLazySingleton(() => ViewVideoProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactWithUsProvider(contactRepo: sl()));
 

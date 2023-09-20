@@ -46,24 +46,24 @@ class StatisticsHeader extends StatelessWidget {
                   WinnerWidget(
                     height: context.height * 0.17,
                     isLoading: provider.isLoading,
-                    name: "test",
-                    image: "",
-                    views: "150",
+                    statisticsModel: provider.statistics.length > 1
+                        ? provider.statistics[1]
+                        : null,
                     index: 2,
                   ),
                   WinnerWidget(
                       height: context.height * 0.215,
                       isLoading: provider.isLoading,
-                      name: "test",
-                      image: "",
-                      views: "150",
+                      statisticsModel: provider.statistics.isNotEmpty
+                          ? provider.statistics[0]
+                          : null,
                       index: 1),
                   WinnerWidget(
                       height: context.height * 0.13,
                       isLoading: provider.isLoading,
-                      name: "test",
-                      image: "",
-                      views: "150",
+                      statisticsModel: provider.statistics.length > 2
+                          ? provider.statistics[2]
+                          : null,
                       index: 3),
                 ]),
           );
