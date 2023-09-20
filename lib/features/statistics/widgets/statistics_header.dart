@@ -39,33 +39,60 @@ class StatisticsHeader extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                 vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  WinnerWidget(
-                    height: context.height * 0.17,
-                    isLoading: provider.isLoading,
-                    statisticsModel: provider.statistics.length > 1
-                        ? provider.statistics[1]
-                        : null,
-                    index: 2,
-                  ),
-                  WinnerWidget(
-                      height: context.height * 0.215,
-                      isLoading: provider.isLoading,
-                      statisticsModel: provider.statistics.isNotEmpty
-                          ? provider.statistics[0]
-                          : null,
-                      index: 1),
-                  WinnerWidget(
-                      height: context.height * 0.13,
-                      isLoading: provider.isLoading,
-                      statisticsModel: provider.statistics.length > 2
-                          ? provider.statistics[2]
-                          : null,
-                      index: 3),
-                ]),
+            child: (provider.statistics.isEmpty && !provider.isLoading)
+                ? Visibility(
+                    visible:
+                        (provider.statistics.isEmpty && !provider.isLoading),
+                    child: Center(
+                      child: Text("لا يوجد مشتركين",
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.semiBold
+                              .copyWith(fontSize: 14, color: Styles.TITLE)),
+                    ),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                        /// The Second
+                        Visibility(
+                          visible: provider.statistics.length > 1,
+                          child: WinnerWidget(
+                            height: context.height * 0.17,
+                            isLoading: provider.isLoading,
+                            statisticsModel: provider.statistics.length > 1
+                                ? provider.statistics[1]
+                                : null,
+                            index: 2,
+                          ),
+                        ),
+
+                        /// The First
+                        Visibility(
+                          visible: provider.statistics.isNotEmpty,
+                          child: WinnerWidget(
+                            height: context.height * 0.215,
+                            isLoading: provider.isLoading,
+                            statisticsModel: provider.statistics.isNotEmpty
+                                ? provider.statistics[0]
+                                : null,
+                            index: 1,
+                          ),
+                        ),
+
+                        /// The Third
+                        Visibility(
+                          visible: provider.statistics.length > 2,
+                          child: WinnerWidget(
+                            height: context.height * 0.13,
+                            isLoading: provider.isLoading,
+                            statisticsModel: provider.statistics.length > 2
+                                ? provider.statistics[2]
+                                : null,
+                            index: 3,
+                          ),
+                        ),
+                      ]),
           );
         })
       ],

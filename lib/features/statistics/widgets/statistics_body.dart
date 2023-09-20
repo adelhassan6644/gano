@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gano/components/animated_widget.dart';
+import 'package:gano/components/shimmer/custom_shimmer.dart';
 import 'package:gano/features/statistics/widgets/statistics_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
-import '../model/statistics_model.dart';
+import '../../../components/empty_widget.dart';
 import '../provider/statistics_provider.dart';
 
 class StatisticsBody extends StatelessWidget {
@@ -55,20 +56,54 @@ class StatisticsBody extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            child: ListAnimator(
-                                controller: controller,
-                                customPadding:
-                                    EdgeInsets.symmetric(horizontal: 12.w),
-                                data: List.generate(
-                                    25,
-                                    (index) => StatisticsCard(
-                                          statistics: StatisticsModel(
-                                              image: "",
-                                              name: "Adel Tester",
-                                              views: "520"),
-                                          isMe: index == 1,
-                                          index: (index + 4),
-                                        ))),
+                            child: Consumer<StatisticsProvider>(
+                                builder: (_, provider, child) {
+                              return provider.isLoading
+                                  ? ListAnimator(
+                                      controller: controller,
+                                      customPadding: EdgeInsets.symmetric(
+                                          horizontal: 12.w),
+                                      data: List.generate(
+                                          25,
+                                          (index) => Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: Dimensions
+                                                        .PADDING_SIZE_SMALL.h),
+                                                child: CustomShimmerContainer(
+                                                  height: 60.h,
+                                                  radius: 12,
+                                                ),
+                                              )),
+                                    )
+                                  : provider.statistics.length > 3
+                                      ? ListAnimator(
+                                          data: List.generate(
+                                              provider.statistics.length > 3
+                                                  ? provider.statistics.length
+                                                  : 0,
+                                              (index) => StatisticsCard(
+                                                    statistics:
+                                                        provider.statistics[
+                                                            (index + 3)],
+                                                    isMe: provider.isMe(provider
+                                                        .statistics[(index + 3)]
+                                                        .id),
+                                                    index: (index + 4),
+                                                  )),
+                                        )
+                                      : ListAnimator(
+                                          data: [
+                                            EmptyState(
+                                              txt: provider
+                                                      .statistics.isNotEmpty
+                                                  ? "لا يوجد مشتركين اكثر من ${provider.statistics.length} "
+                                                  : "لا يوجد مشتركين",
+                                              subText:
+                                                  "ادعو صديقك حتي يربح معانا",
+                                            ),
+                                          ],
+                                        );
+                            }),
                           ),
                         ],
                       ),

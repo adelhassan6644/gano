@@ -27,7 +27,7 @@ class EndPoints {
   static getStatistics(id) => 'statistics/$id';
 
   ///Monthly Statistics
-  static monthlyStatistics(id) => 'top/clients/views/$id';
+  static const String monthlyStatistics = 'top/clients/views';
 
   ///Notifications
   static getNotifications(id) => 'notification/$id';

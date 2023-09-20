@@ -15,7 +15,7 @@ class StatisticsModel {
     id = json['id'];
     name = json['name'];
     image = json['image'];
-    views = json['view_count'];
+    views = json['view_count'].toString();
   }
 
   Map<String, dynamic> toJson() {

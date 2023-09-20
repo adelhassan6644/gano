@@ -25,8 +25,7 @@ class StatisticsRepo {
   Future<Either<ServerFailure, Response>> getMonthlyStatistics() async {
     try {
       Response response = await dioClient.get(
-          uri: EndPoints.monthlyStatistics(
-              sharedPreferences.getString(AppStorageKey.userId)));
+          uri: EndPoints.monthlyStatistics);
       if (response.statusCode == 200) {
         return Right(response);
       } else {
