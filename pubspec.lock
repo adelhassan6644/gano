@@ -489,11 +489,12 @@ packages:
   flutter_inappwebview:
     dependency: "direct main"
     description:
-      name: flutter_inappwebview
-      sha256: fad1f2740ff4b5b7da378a639f54beeb9d787b6339c89a9de00494d92372c0bb
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.0-beta.24+1"
+      path: "."
+      ref: fix-xcode-17
+      resolved-ref: c7b1eb785c9b19ca6154c288e44e2d7b70c998fe
+      url: "https://github.com/Estrelio/flutter_inappwebview.git"
+    source: git
+    version: "6.0.0-beta.25"
   flutter_inappwebview_internal_annotations:
     dependency: transitive
     description:
@@ -1309,6 +1310,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  share_plus:
+    dependency: "direct main"
+    description:
+      name: share_plus
+      sha256: "6cec740fa0943a826951223e76218df002804adb588235a8910dc3d6b0654e11"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.1.0"
+  share_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: share_plus_platform_interface
+      sha256: "357412af4178d8e11d14f41723f80f12caea54cf0d5cd29af9dcdab85d58aea7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
   shared_preferences:
     dependency: "direct main"
     description:

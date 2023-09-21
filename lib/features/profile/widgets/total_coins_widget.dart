@@ -75,7 +75,7 @@ class TotalCoinsWidget extends StatelessWidget {
                         ]),
                   ),
                 ),
-                CustomButton(
+               /* CustomButton(
                     text: getTranslated("transfer", context),
                     backgroundColor: Styles.PRIMARY_COLOR,
                     width: 120,
@@ -84,7 +84,7 @@ class TotalCoinsWidget extends StatelessWidget {
                       Icons.arrow_back_ios_new_outlined,
                       size: 16,
                       color: Styles.WHITE_COLOR,
-                    ))
+                    ))*/
               ],
             )
           ],

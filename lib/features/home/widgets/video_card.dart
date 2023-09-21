@@ -12,7 +12,9 @@ import '../../../navigation/routes.dart';
 import '../../../main_models/video_model.dart';
 
 class VideoCard extends StatelessWidget {
+  final bool fromHome;
   const VideoCard({
+    this.fromHome=true,
     Key? key,
     required this.videoModel,
   }) : super(key: key);
@@ -22,7 +24,7 @@ class VideoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () =>
-          CustomNavigator.push(Routes.VIDEO_DETAILS, arguments: videoModel),
+          CustomNavigator.push(Routes.VIDEO_DETAILS,replace: !fromHome, arguments: videoModel),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 6.h),
         height: 220.h,

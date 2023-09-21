@@ -92,22 +92,22 @@ class Invitation extends StatelessWidget {
                       imageName: SvgImages.faceBook,
                       height: 45,
                       width: 45,
-                      onTap: () => provider.launch(LaunchType.facebook)),
+                      onTap: () => provider.launch(LaunchType.facebook,context)),
                   customImageIconSVG(
                       imageName: SvgImages.twitter,
                       height: 45,
                       width: 45,
-                      onTap: () => provider.launch(LaunchType.twitter)),
+                      onTap: () => provider.launch(LaunchType.twitter,context)),
                   customImageIconSVG(
                       imageName: SvgImages.whatsApp,
                       height: 45,
                       width: 45,
-                      onTap: () => provider.launch(LaunchType.whatsapp)),
+                      onTap: () => provider.launch(LaunchType.whatsapp,context)),
                   customImageIconSVG(
                       imageName: SvgImages.instagram,
                       height: 45,
                       width: 45,
-                      onTap: () => provider.launch(LaunchType.instagram)),
+                      onTap: () => provider.launch(LaunchType.instagram,context)),
                 ],
               )
             ],

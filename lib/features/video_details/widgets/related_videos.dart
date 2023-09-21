@@ -72,6 +72,7 @@ class RelatedVideos extends StatelessWidget {
                                 data: List.generate(
                                     provider.videos.length,
                                     (index) => VideoCard(
+                                      fromHome: false,
                                           videoModel: provider.videos[index],
                                         )),
                               )

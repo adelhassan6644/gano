@@ -5,6 +5,8 @@ class AppStrings {
   static const String defaultAddress = 'المملكة العربية السعودية ، الرياض';
   static const String defaultLat = '24.67401824245781';
   static const String defaultLong = '46.691234707832336';
+  static const String androidDownloadLink = '46.691234707832336';
+  static const String iOSDownloadLink = 'https://play.google.com/store/apps/details?id=com.softwareGano.gano';
 
 
   static const String fontFamily = 'ar';

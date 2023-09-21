@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../data/config/di.dart';
+import '../../../main_page/provider/ad_mob_provider.dart';
 import '../provider/statistics_provider.dart';
 import '../widgets/statistics_body.dart';
 import '../widgets/statistics_header.dart';
@@ -21,6 +23,9 @@ class _StatisticsState extends State<Statistics>
     Future.delayed(Duration.zero, () {
       sl<StatisticsProvider>().scroll(controller);
       sl<StatisticsProvider>().getMonthlyStatistics();
+      Provider.of<AdMobProvider>(context,
+          listen: false)
+          .showRewardedAd();
     });
 
     super.initState();

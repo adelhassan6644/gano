@@ -4,11 +4,15 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:gano/app/localization/localization/language_constant.dart';
+import 'package:gano/features/profile/provider/profile_provider.dart';
 import 'package:gano/navigation/custom_navigation.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
+import '../../../app/core/utils/app_strings.dart';
 import '../../../components/confirmation_dialog.dart';
 import '../../../components/custom_simple_dialog.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/failures.dart';
 import '../repo/invitation_repo.dart';
 
@@ -62,7 +66,14 @@ class InvitationProvider extends ChangeNotifier {
     }
   }
 
-  launch(type) {
+  launch(type, context) async {
+    final box = context.findRenderObject() as RenderBox?;
+
+    await Share.share(
+      "شارك هذا الكود مع عائلتك وأصدقائك  واربح نقاط من Gano  الكود ${sl.get<ProfileProvider>().profileModel!.code}\n Android download : ${AppStrings.androidDownloadLink}\n IOS download : ${AppStrings.iOSDownloadLink}\n",
+      subject: "Gano",
+      sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+    );
     switch (type) {
       case LaunchType.facebook:
         {
@@ -70,7 +81,7 @@ class InvitationProvider extends ChangeNotifier {
         }
       case LaunchType.twitter:
         {
-          return launchTwitter();
+          return;
         }
       case LaunchType.instagram:
         {

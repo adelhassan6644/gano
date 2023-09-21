@@ -4,12 +4,14 @@ import 'package:flutter/services.dart';
 import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/app/core/utils/svg_images.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../../../app/core/utils/styles.dart';
 import '../../../../../components/custom_app_bar.dart';
 import '../../../../../components/custom_images.dart';
 import '../../../../../data/config/di.dart';
+import '../../../../../main_page/provider/ad_mob_provider.dart';
 import '../../../provider/view_video_provider.dart';
 import 'video_progress_view.dart';
 
@@ -34,12 +36,16 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
   late VideoPlayerController _controller;
 
   _initVideo() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Provider.of<AdMobProvider>(context, listen: false).showRewardedAd();
+    });
     switch (widget.type) {
       case VideoType.network:
         _controller =
             VideoPlayerController.networkUrl(Uri.parse(widget.path ?? ""))
               ..setLooping(true)
               ..initialize().then((value) => setState(() {}));
+        _controller.play();
         break;
       case VideoType.asset:
         _controller = VideoPlayerController.asset(widget.path!)
@@ -224,7 +230,7 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
     if (_controller.value.isInitialized) {
       int time = _controller.value.position.inSeconds;
       _controller.dispose();
-      sl<ViewVideoProvider>().viewVideo(id: widget.id, time: time);
+      // sl<ViewVideoProvider>().viewVideo(id: widget.id, time: time);
     }
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values); // to re-show bars

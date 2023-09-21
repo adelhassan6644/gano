@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:gano/features/splash/provider/splash_provider.dart';
 import '../../../app/core/utils/images.dart';
+import '../../../main_page/provider/ad_mob_provider.dart';
 import '../../../navigation/custom_navigation.dart';
 
 class Splash extends StatefulWidget {
@@ -21,6 +22,13 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
     Provider.of<SplashProvider>(CustomNavigator.navigatorState.currentContext!,
             listen: false)
         .startTheApp();
+    Provider.of<AdMobProvider>(CustomNavigator.navigatorState.currentContext!,
+            listen: false)
+        .createRewardedAd();
+    Provider.of<AdMobProvider>(CustomNavigator.navigatorState.currentContext!,
+            listen: false)
+        .createInterstitialAd();
+
     super.initState();
   }
 

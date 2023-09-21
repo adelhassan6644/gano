@@ -1,7 +1,9 @@
 import 'package:gano/app/core/utils/styles.dart';
 import 'package:gano/features/home/provider/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../data/config/di.dart';
+import '../../../main_page/provider/ad_mob_provider.dart';
 import '../widgets/home_videos.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_banners.dart';
@@ -20,6 +22,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   void initState() {
     Future.delayed(Duration.zero, () {
       sl<HomeProvider>().scroll(controller);
+    });
+    Future.delayed(const Duration(seconds: 3), () {
+      if(mounted)
+      Provider.of<AdMobProvider>(context, listen: false).showRewardedAd();
     });
     super.initState();
   }
@@ -40,6 +46,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
               onRefresh: () async {
                 sl<HomeProvider>().getBanners();
                 sl<HomeProvider>().getHomeVideos();
+
+                Provider.of<AdMobProvider>(context, listen: false)
+                    .showRewardedAd();
               },
               child: ListView(
                 controller: controller,

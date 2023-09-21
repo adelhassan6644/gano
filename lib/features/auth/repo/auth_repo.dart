@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
@@ -69,7 +70,8 @@ class AuthRepo {
         // "phone": "1234567891",
         "email": mail,
         "password": password,
-        // "fcm_token": await saveDeviceToken()
+        if(!kDebugMode)
+        "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -155,7 +157,7 @@ class AuthRepo {
         "email": mail,
         if (code != null) "invitation_code": code,
         "password": password,
-        // "fcm_token": await saveDeviceToken()
+        "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {

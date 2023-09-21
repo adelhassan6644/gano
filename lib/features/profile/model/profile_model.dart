@@ -5,11 +5,15 @@ class ProfileModel {
   String? phone;
   String? image;
   String? invitationCode;
+  String? code;
   String? blockedReason;
   String? coins;
   String? views;
   String? points;
   String? weekPoints;
+  String? viewsThisWeek;
+  String? coinsThisMonth;
+  String? coinsThisWeek;
   DateTime? createdAt;
 
   ProfileModel(
@@ -24,6 +28,10 @@ class ProfileModel {
       this.weekPoints,
       this.coins,
       this.views,
+      this.code,
+      this.coinsThisMonth,
+      this.coinsThisWeek,
+      this.viewsThisWeek,
       this.createdAt});
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -32,11 +40,17 @@ class ProfileModel {
         phone: json["phone"],
         email: json["email"],
         image: json["image"],
-        invitationCode: json["invitation_code"],
+        code: json["code"],
+        invitationCode: json["invitation_code"] ?? "000",
         blockedReason: json["blocked_reason"],
         points: json['points'] != null ? json['points'].toString() : "0",
         weekPoints:
             json['week_points'] != null ? json['week_points'].toString() : "0",
+    viewsThisWeek:
+            json['views_this_week'] != null ? json['views_this_week'].toString() : "0",
+    coinsThisMonth:
+            json['coins_this_week'] != null ? json['coins_this_week'].toString() : "0",
+        coinsThisWeek:  json['coins_this_month'] != null ? json['coins_this_month'].toString() : "0",
         coins: json['coins'] != null ? json['coins'].toString() : "0",
         views: json['views'] != null ? json['views'].toString() : "0",
         createdAt: json["created_at"] == null

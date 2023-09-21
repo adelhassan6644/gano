@@ -20,6 +20,7 @@ import '../../features/statistics/provider/statistics_provider.dart';
 import '../../features/statistics/repo/statistics_repo.dart';
 import '../../features/video_details/provider/view_video_provider.dart';
 import '../../features/video_details/repo/video_details_repo.dart';
+import '../../main_page/provider/ad_mob_provider.dart';
 import '../../main_page/provider/main_page_provider.dart';
 import '../api/end_points.dart';
 import '../network/network_info.dart';
@@ -80,6 +81,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ViewVideoProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactWithUsProvider(contactRepo: sl()));
+  sl.registerLazySingleton(() => AdMobProvider());
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

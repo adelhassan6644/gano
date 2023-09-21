@@ -22,13 +22,13 @@ class ProfileStatisticsBody extends StatelessWidget {
                 data: [
                   SizedBox(height: 24.h),
                   TotalCoinsWidget(
-                    points: provider.profileModel?.points ?? "0",
-                    weekPoints: provider.profileModel?.weekPoints ?? "0",
+                    points: provider.profileModel?.coins ?? "0",
+                    weekPoints: provider.profileModel?.coinsThisWeek ?? "0",
                   ),
                   SizedBox(height: 24.h),
                   EarningsWidget(
                     coins: provider.profileModel?.coins ?? "0",
-                    views: provider.profileModel?.views ?? "0",
+                    views: provider.profileModel?.viewsThisWeek ?? "0",
                   )
                 ],
               );

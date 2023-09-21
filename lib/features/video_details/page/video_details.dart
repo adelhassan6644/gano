@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gano/app/core/utils/dimensions.dart';
 import 'package:gano/app/core/utils/extensions.dart';
 import 'package:gano/app/localization/localization/language_constant.dart';
+import 'package:gano/data/api/end_points.dart';
 import 'package:gano/main_models/video_model.dart';
 import 'package:readmore/readmore.dart';
 
@@ -25,7 +26,7 @@ class VideoDetails extends StatelessWidget {
             ///Video
             VideoPlayerView(
                 id: videoModel.id ?? 1,
-                path: videoModel.videoPath ??
+                path:EndPoints.imageUrl+ videoModel.videoPath! ??
                     "https://engineering-tracks.com/webroot/eLearning/Courses/CMRP31/CMRP3101-Part2.mp4",
                 type: VideoType.network,
                 height: context.height * 0.4,

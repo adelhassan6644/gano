@@ -21,7 +21,7 @@ import 'navigation/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
+  // MobileAds.instance.initialize();
   await Firebase.initializeApp(
     // options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -58,6 +58,8 @@ class _MyAppState extends State<MyApp> {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light));
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
 
     return MaterialApp(
       builder: (context, child) => MediaQuery(

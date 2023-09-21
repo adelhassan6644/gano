@@ -12,6 +12,7 @@ import '../../features/profile/provider/profile_provider.dart';
 import '../../features/splash/provider/splash_provider.dart';
 import '../../features/setting/provider/config_provider.dart';
 import '../../features/statistics/provider/statistics_provider.dart';
+import '../../main_page/provider/ad_mob_provider.dart';
 import '../../main_page/provider/main_page_provider.dart';
 
 abstract class ProviderList {
@@ -27,5 +28,6 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<NotificationsProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ContactWithUsProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ConfigProvider>()),
+    ChangeNotifierProvider(create: (_) => di.sl<AdMobProvider>()),
   ];
 }
