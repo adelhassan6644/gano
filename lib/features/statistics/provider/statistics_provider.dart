@@ -48,7 +48,7 @@ class StatisticsProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        if (success.data["data"] != null) {
+        if (success.data["data"] != null&&success.data["data"] != "success") {
           statistics = List<StatisticsModel>.from(
               success.data["data"].map((x) => StatisticsModel.fromJson(x)));
         }
