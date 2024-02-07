@@ -34,9 +34,7 @@
        android:name="${applicationName}"
        android:requestLegacyExternalStorage="true"
        android:icon="@mipmap/ic_launcher">
-       <meta-data
-           android:name="com.google.android.gms.ads.APPLICATION_ID"
-           android:value="ca-app-pub-1390004867728193~3783287240"/>
+
        <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -94,6 +92,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+           android:value="ca-app-pub-9572040558295773~1398864077"/>
 
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyCb1FtVezafyLREu6Hrv5hciMKlqRk6W40"/>

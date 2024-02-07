@@ -83,7 +83,8 @@
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>We need access to your gallery for profile photo.</string>
 		<key>GADApplicationIdentifier</key>
-        <string>ca-app-pub-1390004867728193~7955107173</string>
+                <string>ca-app-pub-9572040558295773~1676381462</string>
+
         <key>SKAdNetworkItems</key>
           <array>
             <dict>

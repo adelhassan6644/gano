@@ -4,7 +4,7 @@ description: A new Flutter project.
 
 publish_to: 'none'
 
-version: 1.0.0+2
+version: 1.0.0+4
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
@@ -30,7 +30,7 @@ dependencies:
   flutter_staggered_animations:
   connectivity:
   image_picker:
-  cached_network_image:
+  cached_network_image: ^3.3.1
   flutter_styled_toast:
   flutter_animated_dialog:
   flutter_animate:

@@ -1,11 +1,12 @@
 class EndPoints {
-  static const String baseUrl = 'https://gano.softwarecloud2.com/api/';
+  // static const String baseUrl = 'https://gano.softwarecloud2.com/api/';
+  static const String baseUrl = 'https://ganoo.net/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
-  static const String imageUrl = 'https://gano.softwarecloud2.com/';
+  static const String imageUrl = 'https://ganoo.net/';
   static const String apiKey =
       's7xrpFdw4G0F21rfLyD4TaBkjVJYgwGfI3y458ejWjw9zOggruX30e1as2d3';
-  static const String rewardedAdAndroid ="ca-app-pub-1390004867728193/1077781593";
-  static const String rewardedAdIOS ="ca-app-pub-1390004867728193/4027755866";
+  static const String rewardedAdAndroid ="ca-app-pub-9572040558295773/6911616020";
+  static const String rewardedAdIOS ="ca-app-pub-9572040558295773/6779754082";
   static const String interstitialAdIOS ="ca-app-pub-1390004867728193/6338982602";
   static const String interstitialAdAndroid  ="ca-app-pub-1390004867728193/3989270998";
   ///Authentication
