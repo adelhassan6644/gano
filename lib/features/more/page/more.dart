@@ -14,18 +14,21 @@ class More extends StatelessWidget {
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        child: const Column(
-          children: [
-            ProfileCard(),
-            Expanded(
-              child: ListAnimator(
-                data: [
-                  SizedBox(height: 24),
-                  MoreBodyWidget(),
-                ],
-              ),
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: const Column(
+            children: [
+              ProfileCard(),
+              Expanded(
+                child: ListAnimator(
+                  data: [
+                    SizedBox(height: 24),
+                    MoreBodyWidget(),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

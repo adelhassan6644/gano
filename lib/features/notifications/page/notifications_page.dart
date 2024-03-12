@@ -24,8 +24,10 @@ class NotificationsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: getTranslated("notifications", context)),
       body: SafeArea(
+        top: true,
         child: Column(
           children: [
+
             Expanded(
                 child: ChangeNotifierProvider(
               create: (_) => NotificationsProvider(repo: sl<NotificationsRepo>())

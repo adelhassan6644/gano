@@ -22,50 +22,53 @@ class HomeHeader extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
           vertical: Dimensions.PADDING_SIZE_SMALL.h),
-      child: Consumer<ProfileProvider>(builder: (_, provider, child) {
-        return provider.isLoading
-            ? const _Shimmer()
-            : Row(
-                children: [
-                  const ProfileImageWidget(
-                    withEdit: false,
-                    withPadding: false,
-                    radius: 28,
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${getTranslated("welcome", context)} ${provider.nameTEC.text.trim()}",
-                          maxLines: 1,
-                          style: AppTextStyles.semiBold.copyWith(
-                              color: Styles.TITLE,
-                              fontSize: 16,
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                        Text(
-                          getTranslated(
-                              "excited_for_what_you_will_see_today", context),
-                          style: AppTextStyles.regular.copyWith(
-                              color: Styles.SUBTITLE,
-                              fontSize: 12,
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                      ],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Consumer<ProfileProvider>(builder: (_, provider, child) {
+          return provider.isLoading
+              ? const _Shimmer()
+              : Row(
+                  children: [
+                    const ProfileImageWidget(
+                      withEdit: false,
+                      withPadding: false,
+                      radius: 28,
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  customContainerSvgIcon(
-                      imageName: SvgImages.notifications,
-                      height: 40,
-                      width: 40,
-                      radius: 100,
-                      onTap: () => CustomNavigator.push(Routes.NOTIFICATIONS))
-                ],
-              );
-      }),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${getTranslated("welcome", context)} ${provider.nameTEC.text.trim()}",
+                            maxLines: 1,
+                            style: AppTextStyles.semiBold.copyWith(
+                                color: Styles.TITLE,
+                                fontSize: 16,
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                          Text(
+                            getTranslated(
+                                "excited_for_what_you_will_see_today", context),
+                            style: AppTextStyles.regular.copyWith(
+                                color: Styles.SUBTITLE,
+                                fontSize: 12,
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    customContainerSvgIcon(
+                        imageName: SvgImages.notifications,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () => CustomNavigator.push(Routes.NOTIFICATIONS))
+                  ],
+                );
+        }),
+      ),
     );
   }
 }

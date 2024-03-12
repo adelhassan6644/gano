@@ -15,7 +15,7 @@ ThemeData dark = ThemeData(
   focusColor: const Color(0xFFADC4C8),
 
   textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(
-    primary: Colors.white, textStyle: const TextStyle(color: Colors.white),
+    foregroundColor: Colors.white, textStyle: const TextStyle(color: Colors.white),
   )),
   pageTransitionsTheme: const PageTransitionsTheme(builders: {
     TargetPlatform.android: CupertinoPageTransitionsBuilder(),

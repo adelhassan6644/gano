@@ -37,55 +37,59 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: true,
       child: Container(
         width: context.width,
         padding:
             EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
         decoration: BoxDecoration(color: colorBG),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            withBack
-                ? InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      SystemChrome.setPreferredOrientations([
-                        DeviceOrientation.portraitDown,
-                        DeviceOrientation.portraitUp,
-                      ]);
-                      CustomNavigator.pop();
-                    },
-                    radius: 100,
-                    child: customImageIconSVG(
-                        imageName: SvgImages.arrowRight,
-                        width: 30,
-                        height: 30,
-                        color: Styles.PRIMARY_COLOR),
-                  )
-                : SizedBox(
-                    width: actionWidth ?? 30,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              withBack
+                  ? InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {
+                        SystemChrome.setPreferredOrientations([
+                          DeviceOrientation.portraitDown,
+                          DeviceOrientation.portraitUp,
+                        ]);
+                        CustomNavigator.pop();
+                      },
+                      radius: 100,
+                      child: customImageIconSVG(
+                          imageName: SvgImages.arrowRight,
+                          width: 30,
+                          height: 30,
+                          color: Styles.PRIMARY_COLOR),
+                    )
+                  : SizedBox(
+                      width: actionWidth ?? 30,
+                    ),
+              const Expanded(child: SizedBox()),
+              Text(
+                title ?? "",
+                textAlign: TextAlign.center,
+                style: AppTextStyles.semiBold
+                    .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 18),
+              ),
+              const Expanded(child: SizedBox()),
+              actionChild ??
+                  const SizedBox(
+                    width: 30,
                   ),
-            const Expanded(child: SizedBox()),
-            Text(
-              title ?? "",
-              textAlign: TextAlign.center,
-              style: AppTextStyles.semiBold
-                  .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 18),
-            ),
-            const Expanded(child: SizedBox()),
-            actionChild ??
-                const SizedBox(
-                  width: 30,
-                ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   @override
-  Size get preferredSize => const Size(15005, 45);
+  Size get preferredSize => const Size(15005, 65);
 }

@@ -23,9 +23,9 @@ class _StatisticsState extends State<Statistics>
     Future.delayed(Duration.zero, () {
       sl<StatisticsProvider>().scroll(controller);
       sl<StatisticsProvider>().getMonthlyStatistics();
-      Provider.of<AdMobProvider>(context,
-          listen: false)
-          .showRewardedAd();
+      // Provider.of<AdMobProvider>(context,
+      //     listen: false)
+      //     .showRewardedAd();
     });
 
     super.initState();
@@ -38,8 +38,11 @@ class _StatisticsState extends State<Statistics>
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        child: const Stack(
-          children: [StatisticsHeader(), StatisticsBody()],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: const Stack(
+            children: [StatisticsHeader(), StatisticsBody()],
+          ),
         ),
       ),
     );

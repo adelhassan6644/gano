@@ -1,6 +1,7 @@
 class BannerModel {
   int? id;
   String? image;
+  String? url;
   String? title;
   int? subServiceId;
 
@@ -8,12 +9,14 @@ class BannerModel {
     this.id,
     this.image,
     this.title,
+    this.url,
     this.subServiceId,
   });
 
   BannerModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     image = json['image'];
+    image = json['url'];
     title = json['title'];
     subServiceId =
         json['subservice'] != null && json['subservice']['id'] != null
