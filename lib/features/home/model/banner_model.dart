@@ -16,12 +16,9 @@ class BannerModel {
   BannerModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     image = json['image'];
-    image = json['url'];
+    url = json['url'];
     title = json['title'];
-    subServiceId =
-        json['subservice'] != null && json['subservice']['id'] != null
-            ? json['subservice']['id']
-            : null;
+
   }
 
   Map<String, dynamic> toJson() {

@@ -28,6 +28,7 @@ class CustomNetworkImage {
       double? widthOfShimmer,
       Widget? imageWidget,
       bool edges = false}) {
+
     return CachedNetworkImage(
       imageUrl: EndPoints.imageUrl + image,
       fadeInDuration: const Duration(seconds: 1),

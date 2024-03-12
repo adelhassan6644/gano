@@ -43,6 +43,7 @@ class HomeBanner extends StatelessWidget {
                             itemBuilder: (context, index, _) {
                               return InkWell(
                                 onTap: () async {
+
                                   if(provider.banners![index].url!=null) {
                                     await launchUrl(Uri.parse(provider.banners![index].url!),mode: LaunchMode.externalApplication);
                                   }
